@@ -137,13 +137,13 @@
     .acm-game-shell:-webkit-full-screen {
       display: flex; flex-direction: column; justify-content: center;
       width: 100vw; height: 100vh; max-width: none; border-radius: 0; border: none;
-      background: var(--ink-2);
+      background: #000000;
       padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right))
         max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
     }
     .acm-game-shell:fullscreen .acm-game-canvas-wrap,
     .acm-game-shell:-webkit-full-screen .acm-game-canvas-wrap {
-      flex: 1 1 auto; min-height: 0; display: flex; justify-content: center;
+      flex: 1 1 auto; min-height: 0; width: auto; display: flex; justify-content: center;
     }
 
     .acm-game-overlay {
@@ -588,10 +588,18 @@
         var isMobile = isMobileView();
         var isFullscreen = !!currentFullscreenElement();
         if (isFullscreen) {
+          /* 直接用 JS 行內樣式鎖住整個 shell（HUD、目標列、畫布都在裡面）
+             的寬度上限，行內樣式優先權最高，不會被瀏覽器自己的全螢幕樣式蓋掉。 */
+          if (normalMaxWidth && shell) {
+            shell.style.maxWidth = normalMaxWidth + "px";
+            shell.style.margin = "0 auto";
+          }
+          w = wrap.clientWidth;
           cssW = normalMaxWidth ? Math.min(w, normalMaxWidth) : w;
           var reserved = (hudNode ? hudNode.offsetHeight : 0) + (targetNode ? targetNode.offsetHeight : 0) + 32;
           cssH = Math.max(320, window.innerHeight - reserved);
         } else {
+          if (shell) { shell.style.maxWidth = ""; shell.style.margin = ""; }
           cssW = w;
           cssH = isMobile
             ? Math.min(640, Math.max(480, Math.round(w * 1.65)))
