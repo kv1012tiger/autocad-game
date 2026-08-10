@@ -1,0 +1,1035 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>AutoCAD 指令快打排行榜</title>
+<meta name="description" content="60 秒內點出正確指令，測試你對 AutoCAD 指令的熟悉度，即刻挑戰全站排行榜！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AutoCAD 指令快打排行榜">
+<meta property="og:description" content="60 秒內點出正確指令，測試你對 AutoCAD 指令的熟悉度，即刻挑戰全站排行榜！">
+<meta property="og:image" content="https://kv1012tiger.github.io/autocad-game/og-image.png">
+<meta property="og:url" content="https://kv1012tiger.github.io/autocad-game/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AutoCAD 指令快打排行榜">
+<meta name="twitter:description" content="60 秒內點出正確指令，測試你對 AutoCAD 指令的熟悉度，即刻挑戰全站排行榜！">
+<meta name="twitter:image" content="https://kv1012tiger.github.io/autocad-game/og-image.png">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://kv1012tiger.github.io/autocad-game/">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+  html, body { margin: 0; padding: 0; background: #0a1f35; }
+</style>
+</head>
+<body>
+<section class="acm">
+  <style>
+    .acm {
+      --ink: #061423;
+      --ink-2: #0a1f35;
+      --surface: #102d4a;
+      --line: #24537f;
+      --line-soft: rgba(255, 255, 255, 0.14);
+      --muted: #a9c6e2;
+      --muted-2: #8fb0cf;
+      --accent: #2ed9ff;
+      --accent-soft: rgba(46, 217, 255, 0.14);
+      --gold: #ffc23d;
+      --gold-deep: #e5a100;
+      --gold-text: #ffe0a3;
+      --r-sm: 8px;
+      --r-md: 12px;
+      --r-lg: 18px;
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      background: var(--ink-2);
+      color: #f2f8ff;
+      line-height: 1.75;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .acm *, .acm *::before, .acm *::after { box-sizing: border-box; }
+
+    .acm-wrap { max-width: 1120px; margin: 0 auto; padding: 40px 20px; }
+
+    .acm-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin: 0 0 14px; padding: 5px 14px; border-radius: 999px;
+      background: var(--accent-soft); border: 1px solid rgba(46, 217, 255, 0.34);
+      color: var(--accent); font-size: 15px; font-weight: 900; letter-spacing: 0.04em;
+    }
+
+    .acm h2 {
+      margin: 0 0 12px; color: #ffffff !important;
+      font-size: clamp(29px, 4.2vw, 44px); line-height: 1.22; font-weight: 900; letter-spacing: -0.01em;
+    }
+
+    .acm h3 {
+      margin: 0 0 10px; color: #ffffff !important;
+      font-size: clamp(20px, 2.4vw, 24px); line-height: 1.35; font-weight: 900;
+    }
+
+    .acm-lead { max-width: 720px; margin: 0 0 34px; color: var(--muted); font-size: clamp(17px, 2vw, 19px); line-height: 1.8; }
+
+    .acm-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 58px; padding: 0 34px; border-radius: var(--r-md); border: 1px solid transparent;
+      background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+      color: #241700 !important; text-decoration: none; font-size: 19px; font-weight: 900; letter-spacing: 0.01em;
+      box-shadow: 0 12px 30px rgba(255, 194, 61, 0.24);
+      cursor: pointer; touch-action: manipulation;
+      transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .acm .acm-btn:hover, .acm .acm-btn:focus {
+      background: #ffffff; border-color: #ffffff; color: #061423 !important;
+      outline: none; transform: translateY(-2px); box-shadow: 0 16px 34px rgba(0, 0, 0, 0.42);
+    }
+
+    .acm-btn--ghost { background: transparent; border-color: rgba(255, 255, 255, 0.4); color: #ffffff !important; box-shadow: none; }
+
+    /* ---------- 小遊戲：AutoCAD 指令快打 ---------- */
+    .acm-game-shell {
+      padding: 20px; border-radius: var(--r-lg);
+      background: linear-gradient(180deg, rgba(29, 74, 117, 0.6), rgba(16, 45, 74, 0.6));
+      border: 1px solid var(--line);
+    }
+
+    .acm-game-hud { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; margin-bottom: 14px; }
+    .acm-game-stat { display: flex; align-items: baseline; gap: 8px; }
+    .acm-game-stat span { color: var(--muted-2); font-size: 14px; font-weight: 800; }
+    .acm-game-stat b { color: #ffffff; font-size: 24px; font-weight: 900; }
+    .acm-game-lives-mute { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+    .acm-game-lives { color: #ff5d7a; font-size: 20px; letter-spacing: 4px; }
+
+    .acm .acm-game-mute {
+      flex: 0 0 auto; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; background: rgba(255, 255, 255, 0.06); border: 1px solid var(--line-soft);
+      color: #ffffff; font-size: 16px; line-height: 1; cursor: pointer;
+    }
+
+    .acm-game-target {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 54px; margin-bottom: 12px; padding: 10px 16px; border-radius: var(--r-md);
+      background: rgba(255, 194, 61, 0.12); border: 1px solid rgba(255, 194, 61, 0.4);
+      color: var(--gold-text); font-size: 19px; font-weight: 900; text-align: center;
+    }
+
+    .acm-game-target b { color: var(--gold); font-size: 24px; }
+
+    .acm-game-canvas-wrap {
+      position: relative; width: 100%; border-radius: var(--r-md); overflow: hidden;
+      border: 1px solid var(--line-soft);
+      background: radial-gradient(circle at 50% 0%, #0c2c4c, #051222 78%);
+      touch-action: none;
+    }
+
+    .acm-game-canvas-wrap canvas { display: block; width: 100%; height: auto; }
+
+    /* 手機開始遊戲時會請求全螢幕，這裡讓全螢幕時版面改成鋪滿整個畫面、置中排列 */
+    .acm-game-shell:fullscreen,
+    .acm-game-shell:-webkit-full-screen {
+      display: flex; flex-direction: column; justify-content: center;
+      width: 100%; max-width: 1080px; margin: 0 auto;
+      height: 100vh; border-radius: 0; border: none;
+      background: var(--ink-2);
+      padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right))
+        max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+    }
+    .acm-game-shell:fullscreen .acm-game-canvas-wrap,
+    .acm-game-shell:-webkit-full-screen .acm-game-canvas-wrap {
+      flex: 1 1 auto; min-height: 0; display: flex; justify-content: center;
+    }
+
+    .acm-game-overlay {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      padding: 24px; background: rgba(4, 12, 22, 0.86); backdrop-filter: blur(2px); text-align: center;
+      z-index: 2; overflow-y: auto; -webkit-overflow-scrolling: touch;
+    }
+
+    .acm-game-overlay[hidden] { display: none; }
+    .acm-game-overlay-body { max-width: 360px; }
+    .acm-game-overlay h3 { margin: 0 0 10px; color: #ffffff; font-size: 24px; font-weight: 900; }
+    .acm-game-overlay p { margin: 0 0 18px; color: var(--muted); font-size: 15px; line-height: 1.7; }
+    .acm-game-score-big { display: block; margin: 0 0 14px; color: var(--gold); font-size: 44px; font-weight: 900; }
+
+    .acm-game-signform { display: none; gap: 10px; margin: 0 0 16px; }
+    .acm-game-signform.is-on { display: flex; }
+    .acm-game-signform input {
+      flex: 1 1 auto; min-width: 0; padding: 10px 12px; border-radius: var(--r-sm);
+      border: 1px solid var(--line-soft); background: rgba(255, 255, 255, 0.06); color: #ffffff; font-size: 15px;
+    }
+    .acm-game-signform input::placeholder { color: var(--muted-2); }
+
+    .acm .acm-game-btn { min-height: 48px; padding: 0 26px; font-size: 16px; }
+
+    .acm-game-board { margin-top: 20px; padding: 20px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--line); }
+    .acm-game-board h3 { margin: 0 0 4px; color: #ffffff; font-size: 19px; }
+    .acm-game-board-note { margin: 0 0 14px; color: var(--muted-2); font-size: 13px; }
+    .acm-game-board ol { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; counter-reset: acmrank; }
+    .acm-game-board li {
+      counter-increment: acmrank; display: flex; align-items: center; gap: 12px;
+      padding: 10px 14px; border-radius: var(--r-sm); background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line-soft);
+    }
+    .acm-game-board li::before {
+      content: counter(acmrank); flex: 0 0 auto; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: 13px; font-weight: 900;
+    }
+    .acm-game-board li:nth-child(1)::before { background: var(--gold); color: #241700; }
+    .acm-game-board li:nth-child(2)::before { background: #cfd9e6; color: #1a2433; }
+    .acm-game-board li:nth-child(3)::before { background: #cd8a4c; color: #241700; }
+    .acm-game-board-name { flex: 1 1 auto; min-width: 0; color: #ffffff; font-size: 15px; font-weight: 800; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .acm-game-board-score { flex: 0 0 auto; color: var(--gold-text); font-size: 16px; font-weight: 900; }
+    .acm-game-empty { color: var(--muted-2); font-size: 14px; padding: 8px 2px; }
+
+    @media (max-width: 640px) {
+      .acm-wrap { padding: 24px 12px; }
+      .acm-game-shell { padding: 12px; }
+      .acm-hide-mobile { display: none; }
+      .acm-game-hud {
+        display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px 12px; margin-bottom: 12px;
+      }
+      .acm-game-stat {
+        min-width: 0; justify-content: space-between; padding: 6px 8px;
+        border-radius: var(--r-sm); background: rgba(255, 255, 255, 0.04);
+      }
+      .acm-game-stat span { font-size: 12px; }
+      .acm-game-stat b { font-size: 20px; }
+      .acm-game-lives-mute { align-self: center; }
+      .acm-game-target { min-height: 48px; padding: 8px 10px; font-size: 16px; }
+      .acm-game-target b { font-size: 20px; }
+      .acm-game-overlay { padding: 14px; }
+      .acm-game-overlay-body { width: 100%; max-width: 330px; }
+      .acm-game-overlay h3 { font-size: 20px; }
+      .acm-game-overlay p { margin-bottom: 14px; font-size: 13px; line-height: 1.55; }
+      .acm .acm-game-btn { width: 100%; min-height: 50px; }
+      .acm-game-signform { gap: 6px; }
+      .acm-game-signform input { padding: 8px 10px; font-size: 14px; }
+      .acm-game-signform .acm-game-btn {
+        width: auto; flex: 0 0 auto; min-height: 40px; padding: 0 14px; font-size: 14px;
+      }
+    }
+  </style>
+
+  <div class="acm-wrap">
+    <p class="acm-eyebrow">熱身一下</p>
+    <h2>AutoCAD 指令快打</h2>
+    <p class="acm-lead">
+      60 秒內點出正確指令，測試你對 AutoCAD 指令的熟悉度。滑鼠、觸控都能玩，正式上課前先來暖身。
+    </p>
+
+    <div class="acm-game-shell">
+      <div class="acm-game-hud">
+        <div class="acm-game-stat"><span>關卡</span><b id="acm-game-level">1</b></div>
+        <div class="acm-game-stat"><span>分數</span><b id="acm-game-score">0</b></div>
+        <div class="acm-game-stat acm-hide-mobile"><span>過關目標</span><b id="acm-game-goal">600</b></div>
+        <div class="acm-game-stat acm-hide-mobile"><span>累計來訪人次</span><b id="acm-game-challenge-count">…</b></div>
+        <div class="acm-game-stat"><span>時間</span><b id="acm-game-time">60</b></div>
+        <div class="acm-game-lives-mute">
+          <div class="acm-game-lives" id="acm-game-lives" aria-label="剩餘生命">♥</div>
+          <button type="button" class="acm-game-mute" id="acm-game-mute" aria-label="切換音效" aria-pressed="false">🔊</button>
+        </div>
+      </div>
+
+      <div class="acm-game-target" id="acm-game-target">按下開始，準備接招</div>
+
+      <div class="acm-game-canvas-wrap">
+        <canvas id="acm-game-canvas" width="640" height="420"></canvas>
+
+        <div class="acm-game-overlay" id="acm-game-overlay">
+          <div class="acm-game-overlay-body">
+            <h3>AutoCAD 指令快打</h3>
+            <p>
+              看中文目標，點選對應的英文指令。每 600 分過一關；點錯或漏接即結束，金色球可清空畫面並加分。
+            </p>
+            <button type="button" class="acm-btn acm-game-btn" id="acm-game-start">開始遊戲</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="acm-game-board">
+      <h3>全站排行榜 ‧ 前 10 名可簽名</h3>
+      <p class="acm-game-board-note">這是所有玩家共用的排行榜，簽名會公開顯示給所有訪客看到，請不要留下真實姓名等個資。</p>
+      <ol id="acm-game-leaderboard">
+        <li class="acm-game-empty" style="display:list-item; list-style:none;">載入排行榜中…</li>
+      </ol>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var canvas = document.getElementById("acm-game-canvas");
+      if (!canvas || !canvas.getContext) { return; }
+
+      var ctx = canvas.getContext("2d");
+      var wrap = canvas.closest(".acm-game-canvas-wrap");
+      var shell = canvas.closest(".acm-game-shell");
+      var overlay = document.getElementById("acm-game-overlay");
+      var startBtn = document.getElementById("acm-game-start");
+      var scoreNode = document.getElementById("acm-game-score");
+      var timeNode = document.getElementById("acm-game-time");
+      var levelNode = document.getElementById("acm-game-level");
+      var goalNode = document.getElementById("acm-game-goal");
+      var livesNode = document.getElementById("acm-game-lives");
+      var targetNode = document.getElementById("acm-game-target");
+      var hudNode = shell ? shell.querySelector(".acm-game-hud") : null;
+      var boardNode = document.getElementById("acm-game-leaderboard");
+      var muteBtn = document.getElementById("acm-game-mute");
+      var challengeCountNode = document.getElementById("acm-game-challenge-count");
+
+      /* ---------- 全螢幕：開始遊戲進全螢幕，遊戲結束回到原本頁面 ----------
+         桌機、手機都會請求全螢幕。iOS Safari 較舊版本不支援讓一般元素全螢幕
+         （只有 <video> 可以），所以這裡做特徵偵測，不支援就靜靜跳過，不影響
+         遊戲本身能不能玩。 */
+      function isMobileView() {
+        return window.matchMedia && window.matchMedia("(max-width: 640px)").matches;
+      }
+
+      function currentFullscreenElement() {
+        return document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement || null;
+      }
+
+      function requestFullscreenOnStart() {
+        if (!shell || currentFullscreenElement()) { return; }
+        var req = shell.requestFullscreen || shell.webkitRequestFullscreen || shell.msRequestFullscreen;
+        if (!req) { return; }
+        try {
+          var p = req.call(shell);
+          if (p && p.catch) { p.catch(function () { /* 使用者裝置不支援或拒絕全螢幕，忽略即可 */ }); }
+        } catch (e) { /* 忽略 */ }
+      }
+
+      function exitFullscreenIfActive() {
+        if (!currentFullscreenElement()) { return; }
+        var exit = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
+        if (!exit) { return; }
+        try {
+          var p = exit.call(document);
+          if (p && p.catch) { p.catch(function () { /* 忽略 */ }); }
+        } catch (e) { /* 忽略 */ }
+      }
+
+      ["fullscreenchange", "webkitfullscreenchange", "MSFullscreenChange"].forEach(function (evt) {
+        document.addEventListener(evt, function () { resizeCanvas(); });
+      });
+
+      /* ---------- 音效（Web Audio 即時合成，不用外部音檔） ---------- */
+      var audioCtx = null;
+      var muted = false;
+
+      function ensureAudio() {
+        if (!audioCtx) {
+          var AC = window.AudioContext || window.webkitAudioContext;
+          if (!AC) { return null; }
+          audioCtx = new AC();
+        }
+        if (audioCtx.state === "suspended") {
+          audioCtx.resume().catch(function () { /* 瀏覽器會在下一次使用者互動時重試 */ });
+        }
+        return audioCtx;
+      }
+
+      function tone(freq, startAt, duration, type, peak) {
+        if (muted) { return; }
+        var ac = ensureAudio();
+        if (!ac) { return; }
+        var osc = ac.createOscillator();
+        var gain = ac.createGain();
+        osc.type = type || "sine";
+        osc.frequency.value = freq;
+        var t0 = ac.currentTime + startAt;
+        gain.gain.setValueAtTime(0, t0);
+        gain.gain.linearRampToValueAtTime(peak || 0.18, t0 + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, t0 + duration);
+        osc.connect(gain);
+        gain.connect(ac.destination);
+        osc.start(t0);
+        osc.stop(t0 + duration + 0.02);
+      }
+
+      var sfx = {
+        start: function () { tone(520, 0, 0.12, "triangle"); tone(780, 0.09, 0.14, "triangle"); },
+        hit: function (streakLevel) {
+          var base = 660 + Math.min(streakLevel, 8) * 30;
+          tone(base, 0, 0.1, "square", 0.14);
+          tone(base * 1.5, 0.04, 0.12, "sine", 0.1);
+        },
+        fail: function () {
+          tone(320, 0, 0.16, "sawtooth", 0.16);
+          tone(180, 0.1, 0.28, "sawtooth", 0.16);
+        },
+        best: function () {
+          [523, 659, 784, 1046].forEach(function (f, i) { tone(f, i * 0.09, 0.16, "triangle", 0.15); });
+        },
+        special: function () {
+          [392, 523, 659, 784, 988].forEach(function (f, i) { tone(f, i * 0.045, 0.2, "triangle", 0.13); });
+        },
+        unlock: function () {
+          [440, 554, 659].forEach(function (f, i) { tone(f, i * 0.07, 0.22, "sawtooth", 0.1); });
+        },
+        levelUp: function () {
+          [392, 494, 587, 784].forEach(function (f, i) { tone(f, i * 0.08, 0.24, "triangle", 0.14); });
+        }
+      };
+
+      if (muteBtn) {
+        muteBtn.addEventListener("click", function () {
+          muted = !muted;
+          muteBtn.textContent = muted ? "🔇" : "🔊";
+          muteBtn.setAttribute("aria-pressed", muted ? "true" : "false");
+          if (!muted) { ensureAudio(); }
+        });
+      }
+
+      /* ---------- 背景音樂：越玩越久 / 分數越高，節奏越緊湊 ---------- */
+      var MUSIC_NOTES = [130.81, 130.81, 174.61, 164.81, 196.00, 164.81, 130.81, 98.00];
+      var musicTimer = null;
+      var musicStep = 0;
+
+      function musicTick() {
+        if (!running) { return; }
+        var difficulty = getDifficulty();
+        var bpm = 126 + difficulty * 124;
+        var stepMs = (60000 / bpm) / 2;
+        var note = MUSIC_NOTES[musicStep % MUSIC_NOTES.length];
+
+        /* 手機喇叭較難表現低頻，因此旋律提高一個八度並加強音量。 */
+        tone(note * 2, 0, (stepMs / 1000) * 0.88, "triangle", 0.1);
+        if (musicStep % 2 === 0) {
+          tone(note * 3, 0.01, 0.07, "square", 0.035);
+        }
+
+        if (difficulty > 0.3 && musicStep % 2 === 1) {
+          tone(note * 4, 0.01, 0.05, "square", 0.03);
+        }
+        if (difficulty > 0.55) {
+          tone(55, 0, 0.09, "sine", 0.09);
+        }
+        if (difficulty > 0.75 && musicStep % 2 === 0) {
+          tone(note * 6, 0.015, 0.06, "sawtooth", 0.028);
+        }
+        if (difficulty > 0.9) {
+          tone(note * 2, 0.03, 0.05, "square", 0.02);
+        }
+
+        musicStep++;
+        musicTimer = setTimeout(musicTick, stepMs);
+      }
+
+      function getDifficulty() {
+        var elapsed = GAME_SECONDS - timeLeft;
+        var timeFactor = Math.max(0, elapsed) / GAME_SECONDS;
+        var finalStretch = timeLeft > 0 && timeLeft <= 10 ? (10 - timeLeft) / 10 * 0.35 : 0;
+        return Math.min(1, Math.max(score / 380, timeFactor * 0.85) + finalStretch);
+      }
+
+      function startMusic() {
+        musicStep = 0;
+        if (musicTimer) { clearTimeout(musicTimer); }
+        musicTick();
+      }
+
+      function stopMusic() {
+        if (musicTimer) { clearTimeout(musicTimer); musicTimer = null; }
+      }
+
+      /* 指令庫：中文全名 + 對應的英文指令（可能不只一個別名） */
+      var BASE_COMMANDS = [
+        { name: "線", cmds: ["L"] },
+        { name: "圓", cmds: ["C"] },
+        { name: "弧", cmds: ["A"] },
+        { name: "聚合線", cmds: ["PL"] },
+        { name: "矩形", cmds: ["REC"] },
+        { name: "複製", cmds: ["CO", "CP"] },
+        { name: "移動", cmds: ["M"] },
+        { name: "修剪", cmds: ["TR"] },
+        { name: "延伸", cmds: ["EX"] },
+        { name: "偏移", cmds: ["O"] },
+        { name: "鏡射", cmds: ["MI"] },
+        { name: "圓角", cmds: ["F"] },
+        { name: "旋轉", cmds: ["RO"] },
+        { name: "比例", cmds: ["SC"] },
+        { name: "拉伸", cmds: ["S"] },
+        { name: "填充線", cmds: ["H"] },
+        { name: "圖層", cmds: ["LA"] },
+        { name: "視窗縮放", cmds: ["Z"] },
+        { name: "平移", cmds: ["P"] },
+        { name: "重繪", cmds: ["R"] },
+        { name: "文字", cmds: ["DT"] },
+        { name: "多行文字", cmds: ["T"] },
+        { name: "陣列", cmds: ["AR"] },
+        { name: "建立圖塊", cmds: ["B"] },
+        { name: "製作圖塊", cmds: ["W"] },
+        { name: "插入", cmds: ["I"] },
+        { name: "接合", cmds: ["J"] },
+        { name: "群組", cmds: ["G"] },
+        { name: "刪除", cmds: ["E"] },
+        { name: "復原", cmds: ["U"] },
+        { name: "標註型式", cmds: ["D"] },
+        { name: "面積", cmds: ["AA"] }
+      ];
+
+      /* 進階指令庫：分數達門檻才會加入題庫，讓遊戲越玩越難 */
+      var ADVANCED_COMMANDS = [
+        { name: "邊界", cmds: ["BO"] },
+        { name: "距離", cmds: ["DI"] },
+        { name: "橢圓", cmds: ["EL"] },
+        { name: "繪製順序", cmds: ["DR"] },
+        { name: "外部參考", cmds: ["XR"] },
+        { name: "漸層", cmds: ["GD"] },
+        { name: "填充線置於最下層", cmds: ["HB"] },
+        { name: "編輯填充線", cmds: ["HE"] },
+        { name: "列示", cmds: ["LI"] },
+        { name: "等距", cmds: ["ME"] },
+        { name: "複線", cmds: ["ML"] },
+        { name: "點", cmds: ["PO"] },
+        { name: "清除", cmds: ["PU"] },
+        { name: "重生", cmds: ["RE"] },
+        { name: "雲形線", cmds: ["SPL"] },
+        { name: "文字型式", cmds: ["ST"] },
+        { name: "表格", cmds: ["TB"] },
+        { name: "單位", cmds: ["UN"] },
+        { name: "建構線", cmds: ["XL"] }
+      ];
+
+      var ADVANCED_UNLOCK_SCORE = 120;
+      var advancedUnlocked = false;
+
+      function activeCommands() {
+        return advancedUnlocked ? BASE_COMMANDS.concat(ADVANCED_COMMANDS) : BASE_COMMANDS;
+      }
+
+      function checkAdvancedUnlock() {
+        if (!advancedUnlocked && score >= ADVANCED_UNLOCK_SCORE) {
+          advancedUnlocked = true;
+          sfx.unlock();
+        }
+      }
+
+      var BUBBLE_COLORS = ["#2ed9ff", "#35e39b", "#ffc23d", "#ff8fb3", "#b18cff"];
+      var GAME_SECONDS = 60;
+      var START_LIVES = 1;
+      var BEST_KEY = "acmGameBest_v1";
+
+      /* ---------- 全站排行榜設定（Google Sheet + Apps Script，免費、免自架後端） ----------
+         把你部署 Apps Script 網頁應用程式後拿到的網址（結尾是 /exec）貼在這裡。
+         這個網址本身就是 https，不需要透過任何第三方代理中繼。
+         注意：這個網址理論上任何看過原始碼的人都能拿去亂塞分數。對一個練習用
+         的小遊戲來說這個風險可以接受，但不要拿來做真的需要防作弊的排行榜。 */
+      var LEADERBOARD_API = "https://script.google.com/macros/s/AKfycbx5yoIGT5BLoe7h8iGSNKGXtDj2eay_-MQTm6OTCFoZm6loR8fqFvh0ZvHX5yiGU7w_/exec";
+      var COURSE_URL = "https://autocad-tw.my1shop.com/lxze8b";
+      var LB_TOP_N = 10;
+      var remoteBoardCache = [];
+
+      function fetchWithTimeout(url, ms) {
+        var controller = window.AbortController ? new AbortController() : null;
+        var timer = controller ? setTimeout(function () { controller.abort(); }, ms) : null;
+        return fetch(url, controller ? { signal: controller.signal } : undefined).then(function (res) {
+          if (timer) { clearTimeout(timer); }
+          return res;
+        }, function (err) {
+          if (timer) { clearTimeout(timer); }
+          throw err;
+        });
+      }
+
+      /* 失敗（含逾時）時等一下再重試一次，通常就是暫時的網路問題。 */
+      function fetchApi(url, attempt) {
+        attempt = attempt || 0;
+        return fetchWithTimeout(url, 8000).then(function (res) {
+          if (!res.ok) { throw new Error("status " + res.status); }
+          return res;
+        }).catch(function (err) {
+          if (attempt >= 1) { throw err; }
+          return new Promise(function (resolve) {
+            setTimeout(function () { resolve(fetchApi(url, attempt + 1)); }, 800);
+          });
+        });
+      }
+
+      var dpr = 1;
+      var cssW = 0;
+      var cssH = 0;
+      var bubbles = [];
+      var target = null;
+      var score = 0;
+      var lives = START_LIVES;
+      var timeLeft = GAME_SECONDS;
+      var streak = 0;
+      var spawnTimer = 0;
+      var spawnInterval = 1100;
+      var running = false;
+      var rafId = null;
+      var lastTs = null;
+      var countdownId = null;
+      var idSeq = 1;
+      var level = 1;
+
+      /* 每關 60 秒，時間到時分數要達到這個門檻才能晉級下一關。
+         想調整晉級難度，改這個公式就好。 */
+      function levelGoal(n) {
+        return n * 600;
+      }
+
+      function resizeCanvas() {
+        var w = wrap.clientWidth;
+        var isMobile = isMobileView();
+        var isFullscreen = !!currentFullscreenElement();
+        cssW = w;
+        if (isFullscreen) {
+          var reserved = (hudNode ? hudNode.offsetHeight : 0) + (targetNode ? targetNode.offsetHeight : 0) + 32;
+          cssH = Math.max(320, window.innerHeight - reserved);
+        } else {
+          cssH = isMobile
+            ? Math.min(640, Math.max(480, Math.round(w * 1.65)))
+            : Math.round(w * 0.92);
+        }
+        dpr = window.devicePixelRatio || 1;
+        canvas.width = Math.round(cssW * dpr);
+        canvas.height = Math.round(cssH * dpr);
+        canvas.style.width = cssW + "px";
+        canvas.style.height = cssH + "px";
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function pickCommand(excludeName) {
+        var pool = activeCommands();
+        if (excludeName) {
+          pool = pool.filter(function (c) { return c.name !== excludeName; });
+        }
+        return pool[Math.floor(Math.random() * pool.length)];
+      }
+
+      function setTarget(cmdObj) {
+        target = cmdObj || pickCommand();
+        if (targetNode) {
+          targetNode.innerHTML = "找出指令：<b>" + escapeHtml(target.name) + "</b>";
+        }
+      }
+
+      function spawnBubble() {
+        var difficulty = getDifficulty();
+        var baseR = Math.max(22, Math.min(46, cssW * 0.08));
+        var r = baseR * (0.68 + Math.random() * 0.62);
+        var speed = 40 + difficulty * 70 + Math.random() * 30;
+
+        /* 特殊球：一定機率出現，點到會讓畫面上所有球一起消失、重新掉落 */
+        var isSpecial = Math.random() < 0.09;
+
+        if (isSpecial) {
+          /* 獎勵球：外觀是「某個真實指令」，不是憑空的星星圖案。
+             點到它就會清空畫面上所有球並加分，跟這球本身是什麼指令無關。 */
+          var bonus = pickCommand();
+          var bonusLabel = bonus.cmds[Math.floor(Math.random() * bonus.cmds.length)];
+          bubbles.push({
+            id: idSeq++,
+            name: bonus.name,
+            label: bonusLabel,
+            special: true,
+            x: r * 1.15 + Math.random() * (cssW - r * 2.3),
+            y: -r * 1.15,
+            r: r * 1.15,
+            vy: speed * 0.85,
+            color: "#ffe066",
+            scale: 1,
+            dying: false
+          });
+          return;
+        }
+
+        var hasTargetOnScreen = bubbles.some(function (b) { return !b.special && b.name === target.name; });
+        var useTarget = !hasTargetOnScreen || Math.random() < 0.32;
+        var c = useTarget ? target : pickCommand(target.name);
+        var label = c.cmds[Math.floor(Math.random() * c.cmds.length)];
+
+        bubbles.push({
+          id: idSeq++,
+          name: c.name,
+          label: label,
+          special: false,
+          x: r + Math.random() * (cssW - r * 2),
+          y: -r,
+          r: r,
+          vy: speed,
+          color: BUBBLE_COLORS[Math.floor(Math.random() * BUBBLE_COLORS.length)],
+          scale: 1,
+          dying: false
+        });
+      }
+
+      function clearBoard() {
+        for (var i = 0; i < bubbles.length; i++) {
+          bubbles[i].dying = true;
+        }
+        score += 20;
+        checkAdvancedUnlock();
+        updateHud();
+      }
+
+      function updateHud() {
+        if (scoreNode) { scoreNode.textContent = String(score); }
+        if (timeNode) { timeNode.textContent = String(timeLeft); }
+        if (levelNode) { levelNode.textContent = String(level); }
+        if (goalNode) { goalNode.textContent = String(levelGoal(level)); }
+        if (livesNode) { livesNode.textContent = "♥".repeat(Math.max(0, lives)) + "♡".repeat(Math.max(0, START_LIVES - lives)); }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, cssW, cssH);
+
+        for (var i = 0; i < bubbles.length; i++) {
+          var b = bubbles[i];
+          var r = b.r * b.scale;
+          if (r <= 0.5) { continue; }
+
+          ctx.beginPath();
+          ctx.arc(b.x, b.y, r, 0, Math.PI * 2);
+          ctx.fillStyle = b.color + (b.dying ? "55" : "e6");
+          ctx.fill();
+          ctx.lineWidth = b.special ? 3 : 2;
+          ctx.strokeStyle = b.special ? "#fff6cf" : "rgba(255,255,255,0.55)";
+          ctx.stroke();
+
+          if (b.special) {
+            ctx.shadowColor = "rgba(255, 224, 102, 0.9)";
+            ctx.shadowBlur = 16;
+            ctx.beginPath();
+            ctx.arc(b.x, b.y, r, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+          }
+
+          ctx.fillStyle = "#04101f";
+          ctx.font = "900 " + Math.round(r * (b.special ? 0.8 : 0.62)) + "px 'Microsoft JhengHei', Arial, sans-serif";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText(b.label, b.x, b.y);
+        }
+      }
+
+      function handleLevelCheckpoint() {
+        var goal = levelGoal(level);
+        if (score >= goal) {
+          level += 1;
+          timeLeft = GAME_SECONDS;
+          bubbles = [];
+          spawnTimer = 0;
+          sfx.levelUp();
+          flashTarget("第 " + level + " 關開始！繼續加油");
+          updateHud();
+        } else {
+          endGame("level_fail");
+        }
+      }
+
+      function flashTarget(message) {
+        if (!targetNode) { return; }
+        var prevHtml = targetNode.innerHTML;
+        targetNode.textContent = message;
+        setTimeout(function () {
+          if (running) { targetNode.innerHTML = prevHtml; }
+        }, 1100);
+      }
+
+      function endGame(reason) {
+        running = false;
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        if (countdownId) { clearInterval(countdownId); countdownId = null; }
+        stopMusic();
+        exitFullscreenIfActive();
+        showGameOver(reason || "time");
+      }
+
+      function step(ts) {
+        if (!running) { return; }
+        if (lastTs === null) { lastTs = ts; }
+        var dt = Math.min(0.05, (ts - lastTs) / 1000);
+        lastTs = ts;
+
+        spawnTimer += dt * 1000;
+        var curInterval = Math.max(420, spawnInterval - getDifficulty() * 620);
+        if (spawnTimer >= curInterval) {
+          spawnTimer = 0;
+          spawnBubble();
+        }
+
+        var missedTarget = false;
+        for (var i = bubbles.length - 1; i >= 0; i--) {
+          var b = bubbles[i];
+          if (b.dying) {
+            b.scale -= dt * 6;
+            if (b.scale <= 0) { bubbles.splice(i, 1); }
+            continue;
+          }
+          b.y += b.vy * dt;
+          if (b.y - b.r > cssH) {
+            if (!b.special && b.name === target.name) { missedTarget = true; }
+            bubbles.splice(i, 1);
+          }
+        }
+
+        if (missedTarget) {
+          registerMiss("missed");
+        }
+
+        draw();
+        if (running) { rafId = requestAnimationFrame(step); }
+      }
+
+      function registerMiss(reason) {
+        lives -= 1;
+        streak = 0;
+        sfx.fail();
+        updateHud();
+        flashWrap();
+        if (lives <= 0) {
+          endGame(reason || "wrong");
+          return;
+        }
+        setTarget();
+      }
+
+      function flashWrap() {
+        wrap.style.boxShadow = "inset 0 0 0 3px rgba(255,93,122,0.85)";
+        setTimeout(function () { wrap.style.boxShadow = "none"; }, 160);
+      }
+
+      function pointToCanvas(evt) {
+        var rect = canvas.getBoundingClientRect();
+        var clientX = evt.clientX;
+        var clientY = evt.clientY;
+        return {
+          x: (clientX - rect.left) * (cssW / rect.width),
+          y: (clientY - rect.top) * (cssH / rect.height)
+        };
+      }
+
+      function onPointerDown(evt) {
+        if (!running) { return; }
+        var p = pointToCanvas(evt);
+        var hitIndex = -1;
+        for (var i = bubbles.length - 1; i >= 0; i--) {
+          var b = bubbles[i];
+          if (b.dying) { continue; }
+          var dx = p.x - b.x;
+          var dy = p.y - b.y;
+          if (Math.sqrt(dx * dx + dy * dy) <= b.r + 6) { hitIndex = i; break; }
+        }
+        if (hitIndex === -1) { return; }
+
+        var hit = bubbles[hitIndex];
+        if (hit.special) {
+          sfx.special();
+          clearBoard();
+          return;
+        }
+        if (hit.name === target.name) {
+          streak += 1;
+          score += 10 + Math.min(streak * 2, 40);
+          hit.dying = true;
+          sfx.hit(streak);
+          checkAdvancedUnlock();
+          updateHud();
+          setTarget();
+        } else {
+          score = Math.max(0, score - 5);
+          hit.dying = true;
+          registerMiss("wrong");
+        }
+      }
+
+      function startGame() {
+        requestFullscreenOnStart();
+        bubbles = [];
+        score = 0;
+        level = 1;
+        lives = START_LIVES;
+        timeLeft = GAME_SECONDS;
+        streak = 0;
+        spawnTimer = 0;
+        lastTs = null;
+        advancedUnlocked = false;
+        running = true;
+        resizeCanvas();
+        setTarget();
+        updateHud();
+        overlay.hidden = true;
+        ensureAudio();
+        sfx.start();
+        startMusic();
+
+        if (countdownId) { clearInterval(countdownId); }
+        countdownId = setInterval(function () {
+          timeLeft -= 1;
+          updateHud();
+          if (timeLeft <= 0) { handleLevelCheckpoint(); }
+        }, 1000);
+
+        if (rafId) { cancelAnimationFrame(rafId); }
+        rafId = requestAnimationFrame(step);
+      }
+
+      /* ---------- 個人最高分（仍存在本機，跟全站排行榜分開） ---------- */
+      function getBest() {
+        try {
+          return parseInt(localStorage.getItem(BEST_KEY) || "0", 10) || 0;
+        } catch (e) {
+          return 0;
+        }
+      }
+
+      function setBest(v) {
+        try { localStorage.setItem(BEST_KEY, String(v)); } catch (e) { /* 忽略 */ }
+      }
+
+      /* ---------- 全站來訪人次 ----------
+         沿用募集頁的 abacus 公開計數 API；每次載入遊戲頁 +1，
+         所有裝置共用同一個總數。服務不可用時顯示破折號，不顯示假數字。 */
+      function renderChallengeCount() {
+        if (!challengeCountNode) { return; }
+        challengeCountNode.textContent = "…";
+        if (!window.fetch) { challengeCountNode.textContent = "—"; return; }
+        fetch("https://abacus.jasoncameron.dev/hit/autocad-tw-mooc-game/pageviews")
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            if (!data || typeof data.value !== "number") { throw new Error("invalid counter response"); }
+            challengeCountNode.textContent = data.value.toLocaleString("zh-TW");
+          })
+          .catch(function () { challengeCountNode.textContent = "—"; });
+      }
+
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[c];
+        });
+      }
+
+      function paintBoard(list) {
+        if (!boardNode) { return; }
+        if (!list || list.length === 0) {
+          boardNode.innerHTML = '<li class="acm-game-empty" style="list-style:none;">還沒有紀錄，開始第一場遊戲搶頭香！</li>';
+          return;
+        }
+        boardNode.innerHTML = list.map(function (entry) {
+          return '<li><span class="acm-game-board-name">' + escapeHtml(entry.name) +
+            '</span><span class="acm-game-board-score">' + entry.score + ' 分</span></li>';
+        }).join("");
+      }
+
+      function fetchRemoteBoard() {
+        var url = LEADERBOARD_API + "?action=list&limit=" + LB_TOP_N + "&_=" + Date.now();
+        return fetchApi(url).then(function (res) { return res.json(); }).then(function (data) {
+          if (!Array.isArray(data)) { return []; }
+          var arr = data.map(function (e) {
+            return { name: String(e.name || "玩家"), score: parseInt(e.score, 10) || 0 };
+          });
+          arr.sort(function (a, b) { return b.score - a.score; });
+          return arr.slice(0, LB_TOP_N);
+        });
+      }
+
+      function renderLeaderboard() {
+        if (!boardNode) { return; }
+        if (!LEADERBOARD_API) {
+          boardNode.innerHTML = '<li class="acm-game-empty" style="list-style:none;">排行榜尚未設定，請在程式碼開頭填入 Apps Script 網頁應用程式網址。</li>';
+          return;
+        }
+        fetchRemoteBoard().then(function (list) {
+          remoteBoardCache = list;
+          paintBoard(list);
+        }).catch(function () {
+          boardNode.innerHTML = '<li class="acm-game-empty" style="list-style:none;">排行榜載入失敗，請檢查網路連線後重新整理。</li>';
+        });
+      }
+
+      function qualifiesForBoard(s) {
+        if (!LEADERBOARD_API) { return false; }
+        if (remoteBoardCache.length < LB_TOP_N) { return true; }
+        return s > remoteBoardCache[remoteBoardCache.length - 1].score;
+      }
+
+      function submitRemoteScore(name, s) {
+        if (!LEADERBOARD_API) { return; }
+        var url = LEADERBOARD_API + "?action=add&name=" + encodeURIComponent(name) + "&score=" + Math.max(0, Math.round(s));
+        fetchApi(url).catch(function () { /* 送出失敗不應該影響遊戲本身，忽略即可 */ });
+      }
+
+      function insertScore(name, s) {
+        submitRemoteScore(name, s);
+        remoteBoardCache = remoteBoardCache.concat([{ name: name || "玩家", score: s }]);
+        remoteBoardCache.sort(function (a, b) { return b.score - a.score; });
+        remoteBoardCache = remoteBoardCache.slice(0, LB_TOP_N);
+        paintBoard(remoteBoardCache);
+        /* 畫面已經先顯示樂觀更新的結果，稍等一下再重新抓一次跟伺服器校正。 */
+        setTimeout(renderLeaderboard, 1500);
+      }
+
+      function showGameOver(reason) {
+        var best = getBest();
+        var isNewBest = score > best;
+        if (isNewBest) { setBest(score); best = score; }
+        var madeTop3 = qualifiesForBoard(score);
+        if (isNewBest && score > 0) { sfx.best(); }
+
+        var heading = reason === "wrong" ? "點錯指令了！"
+          : reason === "missed" ? "漏接指令了！"
+          : reason === "level_fail" ? "分數沒到過關門檻！"
+          : "時間到！";
+
+        overlay.hidden = false;
+        overlay.innerHTML =
+          '<div class="acm-game-overlay-body">' +
+          '<h3>' + heading + '</h3>' +
+          '<span class="acm-game-score-big">' + score + ' 分</span>' +
+          '<p>' + (isNewBest ? "這是你在這台裝置上的最高分。" : "你的最高紀錄是 " + best + " 分。") +
+          (madeTop3 ? "<br>厲害了，這個成績能進全站排行榜前 " + LB_TOP_N + " 名！" : "") + "</p>" +
+          (madeTop3
+            ? '<div class="acm-game-signform is-on" id="acm-game-signform">' +
+              '<input type="text" id="acm-game-name" maxlength="12" placeholder="輸入你的名字簽個名">' +
+              '<button type="button" class="acm-btn acm-game-btn" id="acm-game-sign">簽名</button>' +
+              "</div>"
+            : "") +
+          '<button type="button" class="acm-btn acm-btn--ghost acm-game-btn" id="acm-game-again" style="width:100%; margin-bottom:10px;">再玩一次</button>' +
+          '<a href="' + escapeHtml(COURSE_URL) + '" class="acm-btn acm-game-btn" id="acm-game-to-course" style="width:100%;">看看課程</a>' +
+          "</div>";
+
+        var signBtn = document.getElementById("acm-game-sign");
+        var nameInput = document.getElementById("acm-game-name");
+        if (signBtn) {
+          signBtn.addEventListener("click", function () {
+            var name = (nameInput.value || "").trim().slice(0, 12) || "玩家";
+            insertScore(name, score);
+            signBtn.disabled = true;
+            signBtn.textContent = "已簽名";
+            nameInput.disabled = true;
+          });
+        }
+
+        var againBtn = document.getElementById("acm-game-again");
+        if (againBtn) {
+          againBtn.addEventListener("click", startGame);
+        }
+      }
+
+      canvas.addEventListener("pointerdown", onPointerDown);
+      startBtn.addEventListener("click", startGame);
+
+      window.addEventListener("resize", function () {
+        if (!running) { resizeCanvas(); }
+      });
+
+      resizeCanvas();
+      renderLeaderboard();
+      renderChallengeCount();
+    })();
+  </script>
+</section>
+
+</body>
+</html>
