@@ -128,12 +128,15 @@
 
     .acm-game-canvas-wrap canvas { display: block; width: 100%; height: auto; }
 
-    /* 手機開始遊戲時會請求全螢幕，這裡讓全螢幕時版面改成鋪滿整個畫面、置中排列 */
+    /* 開始遊戲時會請求全螢幕。瀏覽器對「全螢幕元素」有自己的內建樣式
+       （通常會強制鋪滿整個畫面寬度、優先權比我們自己寫的 CSS 還高，
+       max-width 之類的屬性常常蓋不掉），所以這裡不跟瀏覽器搶版面：
+       外層照樣鋪滿，實際的畫布寬度改由 JS 在 resizeCanvas() 裡自己算，
+       桌機全螢幕時把寬度鎖在跟平常差不多，只有高度補滿螢幕。 */
     .acm-game-shell:fullscreen,
     .acm-game-shell:-webkit-full-screen {
       display: flex; flex-direction: column; justify-content: center;
-      width: 100%; max-width: 1080px; margin: 0 auto;
-      height: 100vh; border-radius: 0; border: none;
+      width: 100vw; height: 100vh; max-width: none; border-radius: 0; border: none;
       background: var(--ink-2);
       padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right))
         max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
@@ -287,6 +290,8 @@
          桌機、手機都會請求全螢幕。iOS Safari 較舊版本不支援讓一般元素全螢幕
          （只有 <video> 可以），所以這裡做特徵偵測，不支援就靜靜跳過，不影響
          遊戲本身能不能玩。 */
+      var normalMaxWidth = null;
+
       function isMobileView() {
         return window.matchMedia && window.matchMedia("(max-width: 640px)").matches;
       }
@@ -297,6 +302,7 @@
 
       function requestFullscreenOnStart() {
         if (!shell || currentFullscreenElement()) { return; }
+        normalMaxWidth = wrap.clientWidth || normalMaxWidth;
         var req = shell.requestFullscreen || shell.webkitRequestFullscreen || shell.msRequestFullscreen;
         if (!req) { return; }
         try {
@@ -581,11 +587,12 @@
         var w = wrap.clientWidth;
         var isMobile = isMobileView();
         var isFullscreen = !!currentFullscreenElement();
-        cssW = w;
         if (isFullscreen) {
+          cssW = normalMaxWidth ? Math.min(w, normalMaxWidth) : w;
           var reserved = (hudNode ? hudNode.offsetHeight : 0) + (targetNode ? targetNode.offsetHeight : 0) + 32;
           cssH = Math.max(320, window.innerHeight - reserved);
         } else {
+          cssW = w;
           cssH = isMobile
             ? Math.min(640, Math.max(480, Math.round(w * 1.65)))
             : Math.round(w * 0.92);
