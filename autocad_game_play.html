@@ -504,20 +504,6 @@
         { name: "建構線", cmds: ["XL"] }
       ];
 
-      var FULL_COMMAND_NAMES = {
-        L: "LINE", C: "CIRCLE", A: "ARC", PL: "PLINE", REC: "RECTANG",
-        CO: "COPY", M: "MOVE", TR: "TRIM", EX: "EXTEND", O: "OFFSET",
-        MI: "MIRROR", F: "FILLET", RO: "ROTATE", SC: "SCALE", S: "STRETCH",
-        H: "HATCH", LA: "LAYER", Z: "ZOOM", P: "PAN", R: "REDRAW",
-        DT: "TEXT", T: "MTEXT", AR: "ARRAY", B: "BLOCK", W: "WBLOCK",
-        I: "INSERT", J: "JOIN", G: "GROUP", E: "ERASE", U: "UNDO",
-        D: "DIMSTYLE", AA: "AREA", BO: "BOUNDARY", DI: "DIST", EL: "ELLIPSE",
-        DR: "DRAWORDER", XR: "XREF", GD: "GRADIENT", HB: "HATCHTOBACK",
-        HE: "HATCHEDIT", LI: "LIST", ME: "MEASURE", ML: "MLINE", PO: "POINT",
-        PU: "PURGE", RE: "REGEN", SPL: "SPLINE", ST: "STYLE", TB: "TABLE",
-        UN: "UNITS", XL: "XLINE"
-      };
-
       var ADVANCED_UNLOCK_SCORE = 120;
       var advancedUnlocked = false;
 
@@ -638,8 +624,7 @@
       function setTarget(cmdObj) {
         target = cmdObj || pickCommand();
         if (targetNode) {
-          var fullCommand = FULL_COMMAND_NAMES[target.cmds[0]] || target.cmds[0];
-          targetNode.innerHTML = "找出指令：<b>" + escapeHtml(target.name + " " + fullCommand) + "</b>";
+          targetNode.innerHTML = "找出指令：<b>" + escapeHtml(target.name) + "</b>";
         }
       }
 
