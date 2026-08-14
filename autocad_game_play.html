@@ -638,8 +638,7 @@
       function setTarget(cmdObj) {
         target = cmdObj || pickCommand();
         if (targetNode) {
-          var fullCommand = FULL_COMMAND_NAMES[target.cmds[0]] || target.cmds[0];
-          targetNode.innerHTML = "找出指令：<b>" + escapeHtml(target.name + " " + fullCommand) + "</b>";
+          targetNode.innerHTML = "找出指令：<b>" + escapeHtml(target.name) + "</b>";
         }
       }
 
