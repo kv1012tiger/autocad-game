@@ -286,7 +286,7 @@
       var muteBtn = document.getElementById("acm-game-mute");
       var challengeCountNode = document.getElementById("acm-game-challenge-count");
 
-      /* ---------- 全螢幕：開始遊戲進全螢幕，遊戲結束回到原本頁面 ----------
+      /* ---------- 全螢幕：開始遊戲進全螢幕，遊戲結束保留分數畫面 ----------
          桌機、手機都會請求全螢幕。iOS Safari 較舊版本不支援讓一般元素全螢幕
          （只有 <video> 可以），所以這裡做特徵偵測，不支援就靜靜跳過，不影響
          遊戲本身能不能玩。 */
@@ -504,6 +504,20 @@
         { name: "建構線", cmds: ["XL"] }
       ];
 
+      var FULL_COMMAND_NAMES = {
+        L: "LINE", C: "CIRCLE", A: "ARC", PL: "PLINE", REC: "RECTANG",
+        CO: "COPY", M: "MOVE", TR: "TRIM", EX: "EXTEND", O: "OFFSET",
+        MI: "MIRROR", F: "FILLET", RO: "ROTATE", SC: "SCALE", S: "STRETCH",
+        H: "HATCH", LA: "LAYER", Z: "ZOOM", P: "PAN", R: "REDRAW",
+        DT: "TEXT", T: "MTEXT", AR: "ARRAY", B: "BLOCK", W: "WBLOCK",
+        I: "INSERT", J: "JOIN", G: "GROUP", E: "ERASE", U: "UNDO",
+        D: "DIMSTYLE", AA: "AREA", BO: "BOUNDARY", DI: "DIST", EL: "ELLIPSE",
+        DR: "DRAWORDER", XR: "XREF", GD: "GRADIENT", HB: "HATCHTOBACK",
+        HE: "HATCHEDIT", LI: "LIST", ME: "MEASURE", ML: "MLINE", PO: "POINT",
+        PU: "PURGE", RE: "REGEN", SPL: "SPLINE", ST: "STYLE", TB: "TABLE",
+        UN: "UNITS", XL: "XLINE"
+      };
+
       var ADVANCED_UNLOCK_SCORE = 120;
       var advancedUnlocked = false;
 
@@ -624,7 +638,8 @@
       function setTarget(cmdObj) {
         target = cmdObj || pickCommand();
         if (targetNode) {
-          targetNode.innerHTML = "找出指令：<b>" + escapeHtml(target.name) + "</b>";
+          var fullCommand = FULL_COMMAND_NAMES[target.cmds[0]] || target.cmds[0];
+          targetNode.innerHTML = "找出指令：<b>" + escapeHtml(target.name + " " + fullCommand) + "</b>";
         }
       }
 
@@ -757,7 +772,8 @@
         if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
         if (countdownId) { clearInterval(countdownId); countdownId = null; }
         stopMusic();
-        exitFullscreenIfActive();
+        /* 手機與電腦都不自動退出遊戲畫面：結束時固定停留在最終分數畫面，
+           直到玩家自行按「再玩一次」或「看看課程」。 */
         showGameOver(reason || "time");
       }
 
@@ -1011,8 +1027,9 @@
               "</div>"
             : "") +
           '<button type="button" class="acm-btn acm-btn--ghost acm-game-btn" id="acm-game-again" style="width:100%; margin-bottom:10px;">再玩一次</button>' +
-          '<a href="' + escapeHtml(COURSE_URL) + '" class="acm-btn acm-game-btn" id="acm-game-to-course" style="width:100%;">看看課程</a>' +
+          '<a href="' + escapeHtml(COURSE_URL) + '" class="acm-btn acm-game-btn" id="acm-game-to-course" style="width:100%;">看看課程 募集中</a>' +
           "</div>";
+        overlay.scrollTop = 0;
 
         var signBtn = document.getElementById("acm-game-sign");
         var nameInput = document.getElementById("acm-game-name");
