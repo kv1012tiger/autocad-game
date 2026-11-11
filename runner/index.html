@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a1f35">
+<title>AutoCAD 指令跑酷</title>
+<meta name="description" content="深藍 CAD 科技城市，看中文提示，跑向正確的 AutoCAD 英文指令！連擊越多分數越高，挑戰全站排行榜！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AutoCAD 指令跑酷">
+<meta property="og:description" content="深藍 CAD 科技城市，看中文提示，跑向正確的 AutoCAD 英文指令！連擊越多分數越高，挑戰全站排行榜！">
+<meta property="og:image" content="https://kv1012tiger.github.io/autocad-game/runner/og-image.jpg">
+<meta property="og:url" content="https://kv1012tiger.github.io/autocad-game/runner/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://kv1012tiger.github.io/autocad-game/runner/">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../favicon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<style>html,body{margin:0;padding:0;background:#0a1f35}</style>
+</head>
+<body>
+
+<!-- ===================================================================
+     以下整個 <section class="acr"> 可直接複製到既有網頁當嵌入元件使用。
+     所有樣式與程式都限縮在 .acr 命名空間內，不污染全域。
+     =================================================================== -->
+<section class="acr">
+<style>
+.acr{--ink:#061423;--ink-2:#0a1f35;--surface:#102d4a;--line:#24537f;--line-soft:rgba(255,255,255,0.14);--muted:#a9c6e2;--muted-2:#8fb0cf;--accent:#2ed9ff;--accent-soft:rgba(46,217,255,0.14);--gold:#ffc23d;--gold-deep:#e5a100;--gold-text:#ffe0a3;--r-sm:8px;--r-md:12px;--r-lg:18px;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei","Helvetica Neue",Arial,sans-serif;background:var(--ink-2);color:#f2f8ff;line-height:1.75;font-size:17px;-webkit-font-smoothing:antialiased}
+.acr *,.acr *::before,.acr *::after{box-sizing:border-box}
+.acr-wrap{max-width:1120px;margin:0 auto;padding:40px 20px}
+.acr-eyebrow{display:inline-flex;align-items:center;gap:8px;margin:0 0 14px;padding:5px 14px;border-radius:999px;background:var(--accent-soft);border:1px solid rgba(46,217,255,0.34);color:var(--accent);font-size:15px;font-weight:900;letter-spacing:0.04em}
+.acr h2{margin:0 0 12px;color:#fff !important;font-size:clamp(29px,4.2vw,44px);line-height:1.22;font-weight:900;letter-spacing:-0.01em}
+.acr h3{margin:0 0 10px;color:#fff !important;font-size:clamp(20px,2.4vw,24px);line-height:1.35;font-weight:900}
+.acr-lead{max-width:720px;margin:0 0 34px;color:var(--muted);font-size:clamp(17px,2vw,19px);line-height:1.8}
+.acr-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:58px;padding:0 34px;border-radius:var(--r-md);border:1px solid transparent;background:linear-gradient(180deg,var(--gold) 0%,var(--gold-deep) 100%);color:#241700 !important;text-decoration:none;font-size:19px;font-weight:900;letter-spacing:0.01em;box-shadow:0 12px 30px rgba(255,194,61,0.24);cursor:pointer;touch-action:manipulation;transition:background .18s ease,color .18s ease,transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.acr .acr-btn:hover,.acr .acr-btn:focus{background:#fff;border-color:#fff;color:#061423 !important;outline:none;transform:translateY(-2px);box-shadow:0 16px 34px rgba(0,0,0,.42)}
+.acr-btn--ghost{background:transparent;border-color:rgba(255,255,255,.4);color:#fff !important;box-shadow:none}
+.acr-game-shell{position:relative;padding:20px;border-radius:var(--r-lg);background:linear-gradient(180deg,rgba(29,74,117,.6),rgba(16,45,74,.6));border:1px solid var(--line)}
+.acr-orientation-guard{display:none;position:fixed;inset:0;z-index:99999;align-items:center;justify-content:center;padding:28px;background:rgba(3,10,18,.96);color:#fff;text-align:center}
+.acr-orientation-guard-body{max-width:320px;padding:26px 22px;border-radius:var(--r-lg);background:var(--surface);border:1px solid var(--line);box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.acr-orientation-icon{display:block;margin-bottom:10px;color:var(--gold);font-size:54px;line-height:1}
+.acr-orientation-guard strong{display:block;margin-bottom:6px;font-size:22px}
+.acr-orientation-guard span{color:var(--muted);font-size:14px}
+.acr-game-hud{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;margin-bottom:14px}
+.acr-game-stat{display:flex;align-items:baseline;gap:8px}
+.acr-game-stat span{color:var(--muted-2);font-size:14px;font-weight:800}
+.acr-game-stat b{color:#fff;font-size:24px;font-weight:900}
+.acr-game-lives-mute{display:flex;align-items:center;gap:10px;margin-left:auto}
+.acr-game-lives{color:#ff5d7a;font-size:20px;letter-spacing:4px}
+.acr .acr-game-mute{flex:0 0 auto;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid var(--line-soft);color:#fff;font-size:16px;line-height:1;cursor:pointer}
+.acr-game-target{display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;margin-bottom:12px;padding:8px 13px;border-radius:var(--r-md);background:rgba(255,194,61,.12);border:1px solid rgba(255,194,61,.4);color:var(--gold-text);font-size:17px;font-weight:900;text-align:center}
+.acr-game-target b{color:var(--gold);font-size:23px}
+.acr-game-target i{font-style:normal;color:#fff;font-size:23px;font-weight:900;letter-spacing:.06em;margin-left:11px}
+.acr-game-canvas-wrap{position:relative;width:100%;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line-soft);background:#06182b;touch-action:none;cursor:pointer}
+.acr-game-canvas-wrap canvas{display:block;width:100%;height:auto}
+.acr-game-shell:fullscreen,.acr-game-shell:-webkit-full-screen{display:flex;flex-direction:column;justify-content:center;width:100vw;height:100vh;max-width:none;border-radius:0;border:none;background:#000;padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left))}
+.acr-game-shell.acr-floating-hud .acr-game-hud{display:contents}
+.acr-game-shell.acr-floating-hud .acr-game-stat{position:absolute;left:max(10px,env(safe-area-inset-left));z-index:6;display:flex;align-items:baseline;gap:6px;min-width:0;padding:5px 10px;border-radius:8px;background:rgba(3,13,24,.72);border:1px solid rgba(255,255,255,.12);pointer-events:none;line-height:1.15}
+.acr-game-shell.acr-floating-hud .acr-game-stat:nth-child(1){top:max(10px,env(safe-area-inset-top))}
+.acr-game-shell.acr-floating-hud .acr-game-stat:nth-child(2){top:calc(max(10px,env(safe-area-inset-top)) + 85px)}
+.acr-game-shell.acr-floating-hud .acr-game-stat:nth-child(3){top:calc(max(10px,env(safe-area-inset-top)) + 123px)}
+.acr-game-shell.acr-floating-hud .acr-game-stat:nth-child(4){top:calc(max(10px,env(safe-area-inset-top)) + 161px)}
+.acr-game-shell.acr-floating-hud .acr-game-stat span{font-size:12px}
+.acr-game-shell.acr-floating-hud .acr-game-stat b{font-size:19px}
+.acr-game-shell.acr-floating-hud .acr-game-stat:nth-child(1){padding:9px 16px}
+.acr-game-shell.acr-floating-hud .acr-game-stat:nth-child(1) span{font-size:36px}
+.acr-game-shell.acr-floating-hud .acr-game-stat:nth-child(1) b{font-size:57px}
+.acr-game-shell.acr-floating-hud .acr-game-stat:nth-child(1){transform:scale(.85);transform-origin:top left}
+.acr-game-shell.acr-floating-hud .acr-game-lives-mute{position:absolute;top:max(10px,env(safe-area-inset-top));right:max(10px,env(safe-area-inset-right));z-index:7;gap:8px;margin:0;padding:5px 8px;border-radius:999px;background:rgba(3,13,24,.72);border:1px solid rgba(255,255,255,.12);pointer-events:none}
+.acr-game-shell.acr-floating-hud .acr-game-lives{font-size:18px;letter-spacing:3px}
+.acr-game-shell.acr-floating-hud .acr-game-mute{width:34px;height:34px;font-size:15px;pointer-events:auto}
+.acr-game-shell.acr-floating-hud .acr-game-target{position:absolute;top:max(10px,env(safe-area-inset-top));left:50%;z-index:6;width:auto;min-width:240px;max-width:calc(100% - 300px);min-height:38px;margin:0;padding:6px 11px;transform:translateX(-50%);gap:6px;border-radius:8px;white-space:nowrap;overflow:hidden;background:rgba(31,25,5,.94);font-size:18px;pointer-events:none}
+.acr-game-shell.acr-floating-hud .acr-game-target b,.acr-game-shell.acr-floating-hud .acr-game-target i{font-size:24px}
+.acr-game-shell.acr-floating-hud .acr-game-target i{margin-left:4px}
+.acr-game-shell.acr-floating-hud .acr-game-canvas-wrap{width:100%;height:100%;flex:1 1 auto;border-radius:8px}
+.acr-game-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(4,12,22,.96);backdrop-filter:blur(2px);text-align:center;z-index:20;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.acr-game-overlay[hidden]{display:none}
+.acr-game-overlay-body{max-width:360px}
+.acr #acr-ov-over{width:min(100%,440px);max-width:440px}
+.acr-game-overlay-body[hidden]{display:none}
+.acr-game-shell.acr-overlay-open .acr-game-hud,.acr-game-shell.acr-overlay-open .acr-game-target{visibility:hidden}
+.acr-game-overlay h3{margin:0 0 10px;color:#fff;font-size:24px;font-weight:900}
+.acr-game-overlay p{margin:0 0 18px;color:var(--muted);font-size:15px;line-height:1.7}
+.acr-game-intro-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0 0 16px}
+.acr-game-intro-stat{padding:8px 10px;border-radius:var(--r-sm);background:rgba(255,255,255,.06);border:1px solid var(--line-soft)}
+.acr-game-intro-stat span{display:block;color:var(--muted-2);font-size:12px;font-weight:800;line-height:1.35}
+.acr-game-intro-stat b{display:block;color:#fff;font-size:20px;font-weight:900;line-height:1.4}
+.acr-game-score-big{display:block;margin:0 0 14px;color:var(--gold);font-size:44px;font-weight:900}
+.acr-game-signform{display:flex;gap:10px;margin:0 0 16px}
+.acr-game-signform[hidden]{display:none}
+.acr-game-signform input{flex:1 1 auto;min-width:0;padding:10px 12px;border-radius:var(--r-sm);border:1px solid var(--line-soft);background:rgba(255,255,255,.06);color:#fff;font-size:15px}
+.acr-game-signform input::placeholder{color:var(--muted-2)}
+.acr .acr-game-signform .acr-game-btn{flex:0 0 auto;width:auto;min-width:94px;padding:0 18px}
+.acr .acr-game-btn{min-height:48px;padding:0 26px;font-size:16px}
+.acr-game-board{margin-top:20px;padding:20px;border-radius:var(--r-lg);background:var(--surface);border:1px solid var(--line)}
+.acr-game-board h3{margin:0 0 4px;color:#fff;font-size:19px}
+.acr-game-board-note{margin:0 0 14px;color:var(--muted-2);font-size:13px}
+.acr-game-board ol{display:grid;gap:8px;margin:0;padding:0;list-style:none;counter-reset:acrrank}
+.acr-game-board li{counter-increment:acrrank;display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:var(--r-sm);background:rgba(255,255,255,.04);border:1px solid var(--line-soft)}
+.acr-game-board li::before{content:counter(acrrank);flex:0 0 auto;width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-size:13px;font-weight:900}
+.acr-game-board li:nth-child(1)::before{background:var(--gold);color:#241700}
+.acr-game-board li:nth-child(2)::before{background:#cfd9e6;color:#1a2433}
+.acr-game-board li:nth-child(3)::before{background:#cd8a4c;color:#241700}
+.acr-game-board-name{flex:1 1 auto;min-width:0;color:#fff;font-size:15px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.acr-game-board-score{flex:0 0 auto;color:var(--gold-text);font-size:16px;font-weight:900}
+.acr-game-empty{color:var(--muted-2);font-size:14px;padding:8px 2px;list-style:none}
+.acr-game-empty::before{display:none}
+@media (max-width:640px){
+.acr-wrap{padding:24px 12px}.acr-game-shell{padding:12px}
+.acr-game-hud{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px;margin-bottom:12px}
+.acr-game-stat{min-width:0;justify-content:space-between;padding:6px 8px;border-radius:var(--r-sm);background:rgba(255,255,255,.04)}
+.acr-game-stat span{font-size:12px}.acr-game-stat b{font-size:20px}
+.acr-game-lives-mute{align-self:center}
+.acr-game-target{min-height:43px;padding:6px 8px;font-size:14px}
+.acr-game-target b{font-size:20px}.acr-game-target i{font-size:20px;letter-spacing:.04em;margin-left:6px}
+.acr-game-overlay{padding:14px}.acr-game-overlay-body{width:100%;max-width:330px}
+.acr-game-overlay h3{font-size:20px}
+.acr-game-overlay p{margin-bottom:14px;font-size:13px;line-height:1.55}
+.acr .acr-game-btn{width:100%;min-height:50px}
+}
+@media (max-width:480px) and (orientation:portrait){
+.acr-wrap{padding:18px 10px}.acr h2{font-size:30px}.acr-lead{margin-bottom:20px;font-size:16px;line-height:1.65}
+.acr-game-shell{padding:8px}.acr-game-overlay{padding:10px 12px;align-items:center}
+.acr-game-overlay-body{max-width:290px}.acr-game-overlay h3{margin-bottom:6px;font-size:19px}
+.acr-game-overlay p{margin-bottom:10px;font-size:12px;line-height:1.45}
+.acr .acr-game-btn{min-height:46px;font-size:17px}
+.acr #acr-ov-over .acr-game-score-big{margin-bottom:6px;font-size:40px;line-height:1.25}
+.acr #acr-ov-over p{margin-bottom:7px}
+.acr #acr-ov-over .acr-game-signform{margin-bottom:8px}
+.acr #acr-ov-over .acr-game-btn{min-height:43px}
+.acr #acr-game-again{margin-bottom:6px !important}
+}
+@media (max-width:900px) and (orientation:portrait){.acr-game-shell.acr-landscape-required .acr-orientation-guard{display:flex}}
+@media (max-width:900px){
+.acr #acr-ov-over{width:min(100%,460px);max-width:460px}
+.acr .acr-game-signform .acr-game-btn{width:auto;min-width:82px;padding:0 14px;font-size:15px}
+.acr-game-shell.acr-floating-hud{padding:4px}
+.acr-game-shell.acr-floating-hud .acr-game-stat{gap:4px;padding:3px 6px;border-radius:7px}
+.acr-game-shell.acr-floating-hud .acr-game-stat:nth-child(1){top:max(8px,env(safe-area-inset-top))}
+.acr-game-shell.acr-floating-hud .acr-game-stat:nth-child(2){top:calc(max(8px,env(safe-area-inset-top)) + 77px)}
+.acr-game-shell.acr-floating-hud .acr-game-stat:nth-child(3){top:calc(max(8px,env(safe-area-inset-top)) + 106px)}
+.acr-game-shell.acr-floating-hud .acr-game-stat:nth-child(4){top:calc(max(8px,env(safe-area-inset-top)) + 135px)}
+.acr-game-shell.acr-floating-hud .acr-game-stat span{font-size:9px}
+.acr-game-shell.acr-floating-hud .acr-game-stat b{font-size:14px}
+.acr-game-shell.acr-floating-hud .acr-game-stat:nth-child(1){padding:7px 12px}
+.acr-game-shell.acr-floating-hud .acr-game-stat:nth-child(1) span{font-size:27px}
+.acr-game-shell.acr-floating-hud .acr-game-stat:nth-child(1) b{font-size:42px}
+.acr-game-shell.acr-floating-hud .acr-game-lives-mute{top:max(8px,env(safe-area-inset-top));right:max(8px,env(safe-area-inset-right));gap:6px;padding:4px 6px}
+.acr-game-shell.acr-floating-hud .acr-game-lives{font-size:16px;letter-spacing:2px}
+.acr-game-shell.acr-floating-hud .acr-game-mute{width:30px;height:30px;font-size:14px}
+.acr-game-shell.acr-floating-hud .acr-game-target{top:max(8px,env(safe-area-inset-top));min-width:216px;max-width:calc(100% - 270px);min-height:37px;padding:5px 10px;gap:6px;border-radius:7px;font-size:16px}
+.acr-game-shell.acr-floating-hud .acr-game-target b,.acr-game-shell.acr-floating-hud .acr-game-target i{font-size:22px}
+.acr-game-shell.acr-floating-hud .acr-game-target i{margin-left:3px}
+}
+@media (max-height:500px) and (orientation:landscape){
+.acr-game-overlay{padding:7px 10px}
+.acr #acr-ov-over h3{margin-bottom:2px;font-size:18px}
+.acr #acr-ov-over .acr-game-score-big{margin-bottom:3px;font-size:34px;line-height:1.25}
+.acr #acr-ov-over p{margin-bottom:6px;font-size:11px;line-height:1.35}
+.acr #acr-ov-over .acr-game-signform{margin-bottom:6px}
+.acr #acr-ov-over .acr-game-signform input{padding:7px 10px;font-size:13px}
+.acr #acr-ov-over .acr-game-btn{min-height:38px;font-size:14px}
+.acr #acr-game-again{margin-bottom:6px !important}
+}
+</style>
+
+<div class="acr-wrap">
+  <p class="acr-eyebrow">熱身一下</p>
+  <h2>AutoCAD 指令跑酷</h2>
+  <p class="acr-lead">看中文目標，正確指令會累計連擊並逐步加分；其他指令有少量分數，但會中斷連擊。取得無敵星星時可不限指令持續連擊。</p>
+
+  <div class="acr-game-shell acr-overlay-open">
+    <div class="acr-orientation-guard" id="acr-orientation-guard" role="status" aria-live="polite">
+      <div class="acr-orientation-guard-body">
+        <span class="acr-orientation-icon" aria-hidden="true">↻</span>
+        <strong>請將手機橫向旋轉</strong>
+        <span>遊戲會在橫式畫面繼續進行</span>
+      </div>
+    </div>
+
+    <div class="acr-game-hud">
+      <div class="acr-game-stat"><span>分數</span><b id="acr-game-score">0</b></div>
+      <div class="acr-game-stat"><span>連擊</span><b id="acr-game-streak">0</b></div>
+      <div class="acr-game-stat"><span>距離</span><b id="acr-game-dist">0 m</b></div>
+      <div class="acr-game-stat"><span>速度</span><b id="acr-game-speed">1</b></div>
+      <div class="acr-game-lives-mute">
+        <div class="acr-game-lives" id="acr-game-lives" aria-label="剩餘生命">♥</div>
+        <button type="button" class="acr-game-mute" id="acr-game-mute" aria-label="切換音效" aria-pressed="false">🔊</button>
+      </div>
+    </div>
+
+    <div class="acr-game-target" id="acr-game-target">按下開始，準備起跑</div>
+
+    <div class="acr-game-canvas-wrap" id="acr-game-canvas-wrap">
+      <canvas id="acr-game-canvas" width="640" height="420"></canvas>
+      <div class="acr-game-overlay" id="acr-game-overlay">
+        <!-- 開始畫面 -->
+        <div class="acr-game-overlay-body" id="acr-ov-intro">
+          <h3>AutoCAD 指令跑酷</h3>
+          <p>
+            <b>跳躍：</b>點一下跳躍，空中再點一次可二段跳。<br>
+            <b>得分：</b>跑向提示的正確指令，基本 30 分；連擊越多，加成越高。其他指令加 5 分並中斷連擊；無敵時不限指令。
+          </p>
+          <div class="acr-game-intro-stats" aria-label="遊戲統計">
+            <div class="acr-game-intro-stat"><span>累計來訪人次</span><b id="acr-game-visits">…</b></div>
+            <div class="acr-game-intro-stat"><span>目前最高紀錄</span><b id="acr-game-best">0</b></div>
+          </div>
+          <button type="button" class="acr-btn acr-game-btn" id="acr-game-start">開始遊戲</button>
+        </div>
+        <!-- 結束畫面（預先建好，不用 innerHTML 重建，避免重複綁定監聽器） -->
+        <div class="acr-game-overlay-body" id="acr-ov-over" hidden>
+          <h3>跑不動了！</h3>
+          <span class="acr-game-score-big" id="acr-final-score">0 分</span>
+          <p id="acr-final-note"></p>
+          <div class="acr-game-signform" id="acr-game-signform" hidden>
+            <input type="text" id="acr-game-name" maxlength="12" placeholder="輸入暱稱簽名">
+            <button type="button" class="acr-btn acr-game-btn" id="acr-game-sign">簽名</button>
+          </div>
+          <button type="button" class="acr-btn acr-btn--ghost acr-game-btn" id="acr-game-again" style="width:100%;margin-bottom:10px;">再玩一次</button>
+          <a class="acr-btn acr-game-btn" id="acr-game-to-course" style="width:100%;" href="https://autocad-tw.my1shop.com/lxze8b">看看課程 募集中</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acr-game-board">
+    <h3>跑酷排行榜 ‧ 前 10 名可簽名</h3>
+    <p class="acr-game-board-note">這是所有玩家共用的試算表排行榜，簽名會公開顯示，請使用暱稱且不要留下個人資料。</p>
+    <ol id="acr-game-leaderboard">
+      <li class="acr-game-empty">排行榜載入中…</li>
+    </ol>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var canvas = document.getElementById('acr-game-canvas');
+  if (!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext('2d', { alpha: false });
+  if (!ctx) return;
+
+  var wrap    = document.getElementById('acr-game-canvas-wrap');
+  var shell   = wrap.closest ? wrap.closest('.acr-game-shell') : null;
+  if (!shell) { var n = wrap.parentNode; while (n && n !== document) { if (n.className && (' ' + n.className + ' ').indexOf(' acr-game-shell ') > -1) { shell = n; break; } n = n.parentNode; } }
+  if (shell) shell.classList.add('acr-floating-hud');
+
+  var overlay   = document.getElementById('acr-game-overlay');
+  var ovIntro   = document.getElementById('acr-ov-intro');
+  var ovOver    = document.getElementById('acr-ov-over');
+  var elStart   = document.getElementById('acr-game-start');
+  var elAgain   = document.getElementById('acr-game-again');
+  var elScore   = document.getElementById('acr-game-score');
+  var elStreak  = document.getElementById('acr-game-streak');
+  var elDist    = document.getElementById('acr-game-dist');
+  var elSpeed   = document.getElementById('acr-game-speed');
+  var elLives   = document.getElementById('acr-game-lives');
+  var elTarget  = document.getElementById('acr-game-target');
+  var elMute    = document.getElementById('acr-game-mute');
+  var elFinalSc = document.getElementById('acr-final-score');
+  var elFinalNt = document.getElementById('acr-final-note');
+  var elVisits  = document.getElementById('acr-game-visits');
+  var elBest    = document.getElementById('acr-game-best');
+  var boardNode = document.getElementById('acr-game-leaderboard');
+  var signForm  = document.getElementById('acr-game-signform');
+  var nameInput = document.getElementById('acr-game-name');
+  var signBtn   = document.getElementById('acr-game-sign');
+
+  var BEST_KEY    = 'acrRunnerBest_v1';
+  var COURSE_URL  = 'https://autocad-tw.my1shop.com/lxze8b';
+  var LEADERBOARD_API = 'https://script.google.com/macros/s/AKfycbwRyzhimyOMyEgMB3I8mJMw-Q3HwH4foWIIQZ2pE5sMgq7m3T8e04RYF9X87vFebT59/exec';
+  var VISIT_COUNTER_API = 'https://abacus.jasoncameron.dev/hit/autocad-tw-mooc-runner/pageviews';
+  var LB_TOP_N = 10;
+  var remoteBoardCache = [];
+  var OTHER_BALL_POINTS = 5;
+  var MAX_LIVES = 1;
+
+  function getLocalBest() {
+    try { return parseInt(localStorage.getItem(BEST_KEY) || '0', 10) || 0; }
+    catch (e) { return 0; }
+  }
+  function setLocalBest(v) {
+    try { localStorage.setItem(BEST_KEY, String(v)); } catch (e) {}
+  }
+  function refreshBestHud() {
+    if (!elBest) return;
+    var remoteBest = remoteBoardCache.length ? remoteBoardCache[0].score : 0;
+    elBest.textContent = String(Math.max(getLocalBest(), remoteBest));
+  }
+  function fetchWithTimeout(url, ms) {
+    var controller = window.AbortController ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, ms) : null;
+    return fetch(url, controller ? { signal: controller.signal } : undefined).then(function (res) {
+      if (timer) clearTimeout(timer);
+      return res;
+    }, function (err) {
+      if (timer) clearTimeout(timer);
+      throw err;
+    });
+  }
+  function fetchApi(url, attempt) {
+    attempt = attempt || 0;
+    return fetchWithTimeout(url, 8000).then(function (res) {
+      if (!res.ok) throw new Error('status ' + res.status);
+      return res;
+    }).catch(function (err) {
+      if (attempt >= 1) throw err;
+      return new Promise(function (resolve) {
+        setTimeout(function () { resolve(fetchApi(url, attempt + 1)); }, 800);
+      });
+    });
+  }
+  function renderVisitCount() {
+    if (!elVisits) return;
+    elVisits.textContent = '…';
+    if (!window.fetch) { elVisits.textContent = '—'; return; }
+    fetch(VISIT_COUNTER_API).then(function (res) { return res.json(); }).then(function (data) {
+      if (!data || typeof data.value !== 'number') throw new Error('invalid counter response');
+      elVisits.textContent = data.value.toLocaleString('zh-TW');
+    }).catch(function () { elVisits.textContent = '—'; });
+  }
+  function paintBoard(list) {
+    if (!boardNode) return;
+    if (!list || !list.length) {
+      boardNode.innerHTML = '<li class="acr-game-empty">還沒有紀錄，開始第一場遊戲搶頭香！</li>';
+      return;
+    }
+    boardNode.innerHTML = list.map(function (entry) {
+      return '<li><span class="acr-game-board-name">' + esc(entry.name) +
+             '</span><span class="acr-game-board-score">' + entry.score + ' 分</span></li>';
+    }).join('');
+  }
+  function fetchRemoteBoard() {
+    var url = LEADERBOARD_API + '?action=list&limit=' + LB_TOP_N + '&_=' + Date.now();
+    return fetchApi(url).then(function (res) { return res.json(); }).then(function (data) {
+      if (!Array.isArray(data)) return [];
+      var list = data.map(function (entry) {
+        return { name: String(entry.name || '玩家'), score: parseInt(entry.score, 10) || 0 };
+      });
+      list.sort(function (a, b) { return b.score - a.score; });
+      return list.slice(0, LB_TOP_N);
+    });
+  }
+  function renderLeaderboard() {
+    if (!boardNode) return;
+    fetchRemoteBoard().then(function (list) {
+      remoteBoardCache = list;
+      paintBoard(list);
+      refreshBestHud();
+    }).catch(function () {
+      boardNode.innerHTML = '<li class="acr-game-empty">排行榜載入失敗，請檢查網路連線後重新整理。</li>';
+      refreshBestHud();
+    });
+  }
+  function qualifiesForBoard(value) {
+    if (remoteBoardCache.length < LB_TOP_N) return true;
+    return value > remoteBoardCache[remoteBoardCache.length - 1].score;
+  }
+  function submitRemoteScore(name, value) {
+    var url = LEADERBOARD_API + '?action=add&name=' + encodeURIComponent(name) + '&score=' + Math.max(0, Math.round(value));
+    return fetchApi(url);
+  }
+  function insertScore(name, value) {
+    submitRemoteScore(name, value).catch(function () {});
+    remoteBoardCache = remoteBoardCache.concat([{ name: name || '玩家', score: value }]);
+    remoteBoardCache.sort(function (a, b) { return b.score - a.score; });
+    remoteBoardCache = remoteBoardCache.slice(0, LB_TOP_N);
+    paintBoard(remoteBoardCache);
+    refreshBestHud();
+    setTimeout(renderLeaderboard, 1500);
+  }
+
+  /* =================================================================
+     1. 畫質分級
+     初判依 coarse pointer / 螢幕短邊 / deviceMemory / dpr，不看 UA。
+     開跑後若平均 FPS 持續偏低，只降級一次，避免畫質反覆抖動。
+     ================================================================= */
+  var mqCoarse  = window.matchMedia ? window.matchMedia('(pointer: coarse)') : null;
+  var mqReduce  = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  var reduceMotion = !!(mqReduce && mqReduce.matches);
+  var quality = 'high';        // 'high' | 'low'
+  var lowQ = false;
+  var downgraded = false;
+
+  function isMobileLike() {
+    var coarse = !!(mqCoarse && mqCoarse.matches);
+    var shortSide = Math.min(window.screen ? (screen.width || innerWidth) : innerWidth,
+                             window.screen ? (screen.height || innerHeight) : innerHeight);
+    return (window.matchMedia && window.matchMedia('(max-width: 640px)').matches) || (coarse && shortSide <= 900);
+  }
+  function detectQuality() {
+    var coarse = !!(mqCoarse && mqCoarse.matches);
+    var mem = navigator.deviceMemory || 0;
+    var dpr = window.devicePixelRatio || 1;
+    if (mem && mem <= 2) return 'low';
+    if (coarse && isMobileLike()) return 'low';
+    if (coarse && dpr >= 3) return 'low';
+    return 'high';
+  }
+  function applyQuality(q) {
+    quality = q;
+    lowQ = (q === 'low');
+    MAX_PARTICLES = lowQ ? 46 : 130;
+    MAX_TRAIL     = (lowQ || reduceMotion) ? 6 : 14;
+    DECOR_STARS   = (lowQ || reduceMotion) ? 0 : 26;
+    DECOR_DUST    = (lowQ || reduceMotion) ? 0 : 22;
+    DECOR_GEARS   = (lowQ || reduceMotion) ? 0 : 6;
+    USE_SHADOW    = !lowQ;
+    USE_SPEEDLINE = !lowQ && !reduceMotion;
+    DPR_CAP       = lowQ ? 1.25 : 2;
+  }
+  var MAX_PARTICLES, MAX_TRAIL, DECOR_STARS, DECOR_DUST, DECOR_GEARS, USE_SHADOW, USE_SPEEDLINE, DPR_CAP;
+  applyQuality(detectQuality());
+
+  /* =================================================================
+     2. 音效（單一 AudioContext，排程可完整取消）
+     ================================================================= */
+  var audioCtx = null, muted = false;
+  function ensureAudio() {
+    if (!audioCtx) {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return null;
+      try { audioCtx = new AC(); } catch (e) { return null; }
+    }
+    if (audioCtx.state === 'suspended') { try { audioCtx.resume().catch(function () {}); } catch (e) {} }
+    return audioCtx;
+  }
+  function tone(freq, startAt, duration, type, peak) {
+    if (muted) return;
+    var ac = ensureAudio(); if (!ac) return;
+    var osc = ac.createOscillator(), gain = ac.createGain();
+    osc.type = type || 'sine';
+    osc.frequency.value = freq;
+    var t0 = ac.currentTime + startAt;
+    gain.gain.setValueAtTime(0, t0);
+    gain.gain.linearRampToValueAtTime(peak || 0.18, t0 + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, t0 + duration);
+    osc.connect(gain); gain.connect(ac.destination);
+    osc.start(t0); osc.stop(t0 + duration + 0.02);
+  }
+  var sfx = {
+    start: function () { tone(520, 0, 0.12, 'triangle'); tone(780, 0.09, 0.14, 'triangle'); },
+    hit: function (streakLevel) {
+      var base = 660 + Math.min(streakLevel, 8) * 30;
+      tone(base, 0, 0.1, 'square', 0.14);
+      tone(base * 1.5, 0.04, 0.12, 'sine', 0.1);
+    },
+    fail: function () { tone(320, 0, 0.16, 'sawtooth', 0.16); tone(180, 0.1, 0.28, 'sawtooth', 0.16); },
+    best: function () { [523, 659, 784, 1046].forEach(function (f, i) { tone(f, i * 0.09, 0.16, 'triangle', 0.15); }); },
+    special: function () { [392, 523, 659, 784, 988].forEach(function (f, i) { tone(f, i * 0.045, 0.2, 'triangle', 0.13); }); },
+    unlock: function () { [440, 554, 659].forEach(function (f, i) { tone(f, i * 0.07, 0.22, 'sawtooth', 0.1); }); },
+    levelUp: function () { [392, 494, 587, 784].forEach(function (f, i) { tone(f, i * 0.08, 0.24, 'triangle', 0.14); }); },
+    jump: function (dbl) { dbl ? tone(659, 0, 0.11, 'triangle', 0.1) : tone(440, 0, 0.09, 'triangle', 0.08); },
+    correct: function (s) { sfx.hit(s); },
+    hurt: function () { sfx.fail(); },
+    star: function () { sfx.special(); },
+    smash: function () { sfx.fail(); }
+  };
+
+  // 背景音樂完整沿用「遊戲小工具(嵌入版)」的音列與編曲方式。
+  var BGM_NOTES = [130.81, 130.81, 174.61, 164.81, 196.00, 164.81, 130.81, 98.00];
+  var bgmTimer = null, bgmStep = 0;
+
+  function bgmTick() {
+    if (!playing) return;
+    var difficulty = Math.min(1, Math.max(score / 380, Math.min(1, elapsedPlay / 180) * 0.85));
+    var bpm = 126 + difficulty * 124;
+    var beat = (60000 / bpm) / 2;
+    var note = BGM_NOTES[bgmStep % BGM_NOTES.length];
+    tone(note * 2, 0, (beat / 1000) * 0.88, 'triangle', 0.1);
+    if (bgmStep % 2 === 0) tone(note * 3, 0.01, 0.07, 'square', 0.035);
+    if (difficulty > 0.3 && bgmStep % 2 === 1) tone(note * 4, 0.01, 0.05, 'square', 0.03);
+    if (difficulty > 0.55) tone(55, 0, 0.09, 'sine', 0.09);
+    if (difficulty > 0.75 && bgmStep % 2 === 0) tone(note * 6, 0.015, 0.06, 'sawtooth', 0.028);
+    if (difficulty > 0.9) tone(note * 2, 0.03, 0.05, 'square', 0.02);
+    bgmStep++;
+    bgmTimer = setTimeout(bgmTick, beat);
+  }
+  function bgmStart() { bgmStop(); bgmStep = 0; bgmTick(); }
+  function bgmStop() { if (bgmTimer) { clearTimeout(bgmTimer); bgmTimer = null; } }
+  function starMusicStart() { /* 原版只有取得星星音效，不另疊加循環音樂 */ }
+  function starMusicStop() {}
+
+  elMute.addEventListener('click', function (e) {
+    e.stopPropagation();
+    muted = !muted;
+    elMute.textContent = muted ? '🔇' : '🔊';
+    elMute.setAttribute('aria-pressed', muted ? 'true' : 'false');
+    if (!muted) ensureAudio();
+  });
+
+  /* =================================================================
+     3. 指令題庫（完整保留，未刪減）
+     ================================================================= */
+  var CMD_BASE = [
+    {name:'線',full:'LINE',cmds:['L']},{name:'圓',full:'CIRCLE',cmds:['C']},{name:'弧',full:'ARC',cmds:['A']},
+    {name:'聚合線',full:'PLINE',cmds:['PL']},{name:'矩形',full:'RECTANG',cmds:['REC']},{name:'複製',full:'COPY',cmds:['CO','CP']},
+    {name:'移動',full:'MOVE',cmds:['M']},{name:'修剪',full:'TRIM',cmds:['TR']},{name:'延伸',full:'EXTEND',cmds:['EX']},
+    {name:'偏移',full:'OFFSET',cmds:['O']},{name:'鏡射',full:'MIRROR',cmds:['MI']},{name:'圓角',full:'FILLET',cmds:['F']},
+    {name:'旋轉',full:'ROTATE',cmds:['RO']},{name:'比例',full:'SCALE',cmds:['SC']},{name:'拉伸',full:'STRETCH',cmds:['S']},
+    {name:'填充線',full:'HATCH',cmds:['H']},{name:'圖層',full:'LAYER',cmds:['LA']},{name:'視窗縮放',full:'ZOOM',cmds:['Z']},
+    {name:'平移',full:'PAN',cmds:['P']},{name:'重繪',full:'REDRAW',cmds:['R']},{name:'文字',full:'DTEXT',cmds:['DT']},
+    {name:'多行文字',full:'MTEXT',cmds:['T']},{name:'陣列',full:'ARRAY',cmds:['AR']},{name:'建立圖塊',full:'BLOCK',cmds:['B']},
+    {name:'製作圖塊',full:'WBLOCK',cmds:['W']},{name:'插入',full:'INSERT',cmds:['I']},{name:'接合',full:'JOIN',cmds:['J']},
+    {name:'群組',full:'GROUP',cmds:['G']},{name:'刪除',full:'ERASE',cmds:['E']},{name:'復原',full:'UNDO',cmds:['U']},
+    {name:'標註型式',full:'DIMSTYLE',cmds:['D']},{name:'面積',full:'AREA',cmds:['AA']}
+  ];
+  var CMD_EXTRA = [
+    {name:'邊界',full:'BOUNDARY',cmds:['BO']},{name:'距離',full:'DIST',cmds:['DI']},{name:'橢圓',full:'ELLIPSE',cmds:['EL']},
+    {name:'繪製順序',full:'DRAWORDER',cmds:['DR']},{name:'外部參考',full:'XREF',cmds:['XR']},{name:'漸層',full:'GRADIENT',cmds:['GD']},
+    {name:'編輯填充線',full:'HATCHEDIT',cmds:['HE']},{name:'列示',full:'LIST',cmds:['LI']},{name:'等距',full:'MEASURE',cmds:['ME']},
+    {name:'複線',full:'MLINE',cmds:['ML']},{name:'點',full:'POINT',cmds:['PO']},{name:'清除',full:'PURGE',cmds:['PU']},
+    {name:'重生',full:'REGEN',cmds:['RE']},{name:'雲形線',full:'SPLINE',cmds:['SPL']},{name:'文字型式',full:'STYLE',cmds:['ST']},
+    {name:'表格',full:'TABLE',cmds:['TB']},{name:'單位',full:'UNITS',cmds:['UN']},{name:'建構線',full:'XLINE',cmds:['XL']}
+  ];
+  var BALL_COLORS = ['#2ed9ff', '#35e39b', '#ffc23d', '#ff8fb3', '#b18cff'];
+  var expanded = false;
+
+  /* =================================================================
+     4. 尺寸 / 世界常數
+     ================================================================= */
+  var dpr = 1, W = 0, Hpx = 0, S = 1;         // S = 依高度換算的縮放係數
+  var groundY = 0, deckH = 0, deckY = 0, gravity = 0, jumpV = 0;
+  var mobile = false;
+
+  /* 遊戲狀態 */
+  var playing = false, rafId = null, prevTs = null;
+  var score = 0, streak = 0, lives = MAX_LIVES, travelled = 0, scroll = 0, elapsedPlay = 0;
+  var hurtT = 0, invincible = 0, target = null;
+  var platTimer = 0, spawnTimer = 0, gapTimer = 0, starCd = 0, uid = 1, ballSpin = 0;
+  var holding = false;
+  var player = { y: 0, vy: 0, onGround: true, r: 0, squash: 0, jumps: 2 };
+
+  /* 物件陣列（皆有上限） */
+  var balls = [], obstacles = [], platforms = [], groundGaps = [], stars = [], particles = [], trail = [];
+  var trailHead = 0;
+  var particlePool = [];
+  var MAX_BALLS = 60, MAX_OBS = 40, MAX_PLAT = 24, MAX_GAPS = 8, MAX_STARS = 8;
+
+  /* 裝飾物（僅 high 畫質使用） */
+  var gears = [], dust = [];
+
+  /* 無敵條位置（只在 resize / 吃到星星時量測 DOM） */
+  var barTop = 12, barCx = 0;
+
+  /* =================================================================
+     5. 離屏快取：靜態底圖 + 可平鋪的網格 / 城市圖層
+        只有 resize、旋轉、畫質變更時重建，遊戲迴圈內完全不重建。
+     ================================================================= */
+  var bgLayer = document.createElement('canvas');   // 天空、星點、地面（不捲動）
+  var cityLayer = document.createElement('canvas'); // 建築（含窗格，預先畫好）
+  var gridLayer = document.createElement('canvas'); // 網格直線（一格，平鋪）
+  var cityW = 0, gridW = 0;
+  var gradPlatform = null;   // 平台用漸層，建在區域座標，可重複使用
+
+  // 單位星形 / 單位尖球路徑：只建一次，之後靠 transform 縮放
+  var STAR_PATH = makeStarPath(1, 0.46, 5);
+  var SPIKE_PATH = makeSpikePath(1, 0.6, 8);
+  function makeStarPath(outer, inner, points) {
+    var p = new Path2D();
+    for (var i = 0; i < points * 2; i++) {
+      var rad = i % 2 === 0 ? outer : inner;
+      var a = i / (points * 2) * Math.PI * 2 - Math.PI / 2;
+      var x = Math.cos(a) * rad, y = Math.sin(a) * rad;
+      i === 0 ? p.moveTo(x, y) : p.lineTo(x, y);
+    }
+    p.closePath(); return p;
+  }
+  function makeSpikePath(outer, inner, points) {
+    var p = new Path2D();
+    for (var i = 0; i < points; i++) {
+      var a1 = i / points * Math.PI * 2, a2 = (i + 0.5) / points * Math.PI * 2;
+      var x = Math.cos(a1) * outer, y = Math.sin(a1) * outer;
+      i === 0 ? p.moveTo(x, y) : p.lineTo(x, y);
+      p.lineTo(Math.cos(a2) * inner, Math.sin(a2) * inner);
+    }
+    p.closePath(); return p;
+  }
+
+  function buildBackgroundLayer() {
+    bgLayer.width = Math.max(1, Math.round(W * dpr));
+    bgLayer.height = Math.max(1, Math.round(Hpx * dpr));
+    var g = bgLayer.getContext('2d');
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    var sky = g.createLinearGradient(0, 0, 0, Hpx);
+    sky.addColorStop(0, '#0b3358'); sky.addColorStop(0.55, '#0a2440'); sky.addColorStop(1, '#06182b');
+    g.fillStyle = sky; g.fillRect(0, 0, W, Hpx);
+
+    // 星點：預先烘進底圖，不做每幀閃爍
+    for (var i = 0; i < DECOR_STARS; i++) {
+      g.globalAlpha = 0.25 + 0.3 * Math.random();
+      g.fillStyle = '#cfeaff';
+      g.beginPath();
+      g.arc(Math.random() * W, Math.random() * groundY * 0.62, (0.8 + 1.3 * Math.random()) * S, 0, 6.2832);
+      g.fill();
+    }
+    g.globalAlpha = 1;
+
+    if (!lowQ) {
+      var glow = g.createRadialGradient(W * 0.76, groundY * 0.3, 0, W * 0.76, groundY * 0.3, 160 * S);
+      glow.addColorStop(0, 'rgba(46,217,255,0.20)'); glow.addColorStop(1, 'rgba(46,217,255,0)');
+      g.fillStyle = glow; g.fillRect(0, 0, W, groundY);
+    }
+
+    // 水平網格線（不會左右捲動，直接烘進底圖）
+    g.globalAlpha = 0.1; g.strokeStyle = '#2ed9ff'; g.lineWidth = 1;
+    var step = 64 * S;
+    g.beginPath();
+    for (var y = groundY - step; y > 0; y -= step) { g.moveTo(0, y); g.lineTo(W, y); }
+    g.stroke();
+    g.globalAlpha = 1;
+
+    // 地面
+    var gnd = g.createLinearGradient(0, groundY, 0, Hpx);
+    gnd.addColorStop(0, '#123a5d'); gnd.addColorStop(1, '#08192c');
+    g.fillStyle = gnd; g.fillRect(0, groundY, W, Hpx - groundY);
+    if (USE_SHADOW) { g.shadowColor = 'rgba(46,217,255,0.8)'; g.shadowBlur = 12; }
+    g.strokeStyle = '#2ed9ff'; g.lineWidth = 2.5 * S;
+    g.beginPath(); g.moveTo(0, groundY); g.lineTo(W, groundY); g.stroke();
+    g.shadowBlur = 0;
+  }
+
+  function buildCityLayer() {
+    // 建築寬 46~92*S，最大高度 164*S；圖層寬度取 W + 邊界，且建築不跨越右緣，平鋪無縫
+    var maxW = 92 * S, pad = maxW + 40 * S;
+    cityW = Math.max(240, Math.round(W + pad));
+    cityLayer.width = Math.max(1, Math.round(cityW * dpr));
+    cityLayer.height = Math.max(1, Math.round(groundY * dpr));
+    var g = cityLayer.getContext('2d');
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    g.clearRect(0, 0, cityW, groundY);
+
+    var x = 0;
+    while (x < cityW - maxW) {
+      var bw = (46 + 46 * Math.random()) * S;
+      var bh = (46 + 118 * Math.random()) * S;
+      var by = groundY - bh;
+      g.fillStyle = 'rgba(9,33,58,0.95)';
+      g.fillRect(x, by, bw, bh);
+      g.strokeStyle = 'rgba(46,217,255,0.2)'; g.lineWidth = 1;
+      g.strokeRect(x + 0.5, by + 0.5, bw - 1, bh - 1);
+      // 窗格：一次畫完存進圖層，之後每幀是零成本
+      g.fillStyle = 'rgba(255,206,120,0.42)';
+      var cols = Math.max(2, Math.floor(bw / (15 * S)));
+      var rows = Math.max(2, Math.floor(bh / (19 * S)));
+      var seed = Math.floor(Math.random() * 100);
+      for (var c = 0; c < cols; c++) for (var r = 0; r < rows; r++) {
+        if ((7 * c + 13 * r + seed) % 5 === 0) g.fillRect(x + 5 * S + c * (bw / cols), by + 7 * S + r * (bh / rows), 4 * S, 5 * S);
+      }
+      x += bw + (16 + 38 * Math.random()) * S;
+    }
+  }
+
+  function buildGridLayer() {
+    gridW = Math.max(8, Math.round(64 * S));
+    gridLayer.width = Math.max(1, Math.round(gridW * dpr));
+    gridLayer.height = Math.max(1, Math.round(groundY * dpr));
+    var g = gridLayer.getContext('2d');
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    g.clearRect(0, 0, gridW, groundY);
+    g.globalAlpha = 0.1; g.strokeStyle = '#2ed9ff'; g.lineWidth = 1;
+    g.beginPath(); g.moveTo(0.5, 0); g.lineTo(0.5, groundY); g.stroke();
+  }
+
+  function buildCaches() {
+    buildBackgroundLayer();
+    buildCityLayer();
+    buildGridLayer();
+    gradPlatform = ctx.createLinearGradient(0, 0, 0, 12 * S);
+    gradPlatform.addColorStop(0, '#2f6f9e'); gradPlatform.addColorStop(1, '#14364f');
+
+    gears.length = 0; dust.length = 0;
+    for (var i = 0; i < DECOR_GEARS; i++) gears.push(makeGear(Math.random() * (W + 200 * S)));
+    for (var j = 0; j < DECOR_DUST; j++) dust.push({ x: Math.random() * W, y: Math.random() * groundY, r: (1 + 2 * Math.random()) * S, sp: 0.25 + 0.55 * Math.random(), a: 0.12 + 0.3 * Math.random() });
+  }
+  function makeGear(x) {
+    var kinds = ['gear', 'tri', 'ring', 'rect'];
+    return { x: x, y: 36 + Math.random() * Math.max(40, groundY * 0.5), r: (13 + 19 * Math.random()) * S,
+             kind: kinds[Math.floor(Math.random() * kinds.length)], rot: Math.random() * Math.PI, spin: 1.5 * (Math.random() - 0.5) };
+  }
+
+  /* =================================================================
+     6. 版面尺寸（集中量測，動畫幀內不再讀 DOM 尺寸）
+     ================================================================= */
+  function fullscreenEl() {
+    return document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement || null;
+  }
+  function layout() {
+    var cssW = wrap.clientWidth || 640;
+    mobile = isMobileLike();
+    var fs = !!fullscreenEl();
+    var guard = mobile && shell && shell.classList.contains('acr-landscape-required');
+
+    if (fs) {
+      if (shell) { shell.style.maxWidth = 'none'; shell.style.margin = '0'; }
+      cssW = wrap.clientWidth || cssW;
+      W = cssW;
+      Hpx = Math.max(280, wrap.clientHeight || (window.innerHeight - 16));
+    } else {
+      if (shell) { shell.style.maxWidth = ''; shell.style.margin = ''; }
+      W = cssW;
+      Hpx = guard ? Math.max(300, Math.min(window.innerHeight - 16, Math.round(cssW * 0.65)))
+                  : (mobile ? Math.round(cssW * 1.10) : Math.round(cssW * 0.56));
+    }
+
+    S = Math.max(0.75, Math.min(2, Hpx / 320));
+    groundY = Hpx * 0.94;
+    deckH = groundY * 0.5;
+    deckY = groundY - deckH;
+    var unit = deckH * 1.3;
+    gravity = unit * 12.5;
+    jumpV = unit * 5;
+    player.r = 23 * S;
+    if (!playing) player.y = groundY - player.r;
+
+    dpr = Math.min(window.devicePixelRatio || 1, DPR_CAP);
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(Hpx * dpr);
+    canvas.style.width = W + 'px';
+    canvas.style.height = Hpx + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    buildCaches();
+    measureBar();
+  }
+  function measureBar() {
+    if (!elTarget) return;
+    var tb = elTarget.getBoundingClientRect(), cb = canvas.getBoundingClientRect();
+    barTop = Math.max(12 * S, tb.bottom - cb.top + 10 * S);
+    barCx = (tb.left + tb.width / 2 - cb.left) * (W / Math.max(1, cb.width));
+  }
+
+  /* =================================================================
+     7. 速度曲線 / 題目
+     ================================================================= */
+  function progress() { return Math.min(1, travelled / (16000 * S)); }
+  function speedStage() {
+    var sec = Math.floor(elapsedPlay);
+    if (sec <= 30) return { level: 1, multiplier: 1.2 };
+    if (sec <= 60) return { level: 2, multiplier: 1.3 };
+    if (sec <= 90) return { level: 3, multiplier: 1.4 };
+    if (sec <= 120) return { level: 4, multiplier: 1.5 };
+    if (sec <= 150) return { level: 5, multiplier: 1.6 };
+    if (sec <= 180) return { level: 6, multiplier: 1.7 };
+    return { level: 7, multiplier: 1.8 };
+  }
+  function speed() {
+    return 240 * speedStage().multiplier * S;
+  }
+  function pickCmd(excludeName) {
+    var pool = expanded ? CMD_BASE.concat(CMD_EXTRA) : CMD_BASE;
+    if (excludeName) pool = pool.filter(function (c) { return c.name !== excludeName; });
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function newTarget() {
+    target = pickCmd();
+    if (elTarget) elTarget.innerHTML = '跑向指令：<b>' + esc(target.name) + '</b><i>' + esc(target.full) + '</i>';
+  }
+
+  /* =================================================================
+     8. HUD 節流：只有顯示值真的變了才寫 DOM
+     ================================================================= */
+  var hudCache = { score: -1, streak: -1, dist: -1, lives: -1, speedLevel: -1 };
+  var hudAcc = 0;
+  function syncHud() {
+    var s = Math.round(score);
+    if (s !== hudCache.score) { hudCache.score = s; elScore.textContent = String(s); }
+    if (streak !== hudCache.streak) { hudCache.streak = streak; elStreak.textContent = String(streak); }
+    var d = Math.round(travelled / (10 * S));
+    if (d !== hudCache.dist) { hudCache.dist = d; elDist.textContent = d + ' m'; }
+    if (lives !== hudCache.lives) {
+      hudCache.lives = lives;
+      elLives.textContent = '♥'.repeat(Math.max(0, lives)) + '♡'.repeat(Math.max(0, MAX_LIVES - lives));
+      elLives.setAttribute('aria-label', '剩餘生命 ' + lives + ' 條');
+    }
+    var stage = speedStage();
+    var speedKey = stage.level + ':' + stage.multiplier;
+    if (speedKey !== hudCache.speedLevel) {
+      hudCache.speedLevel = speedKey;
+      elSpeed.textContent = String(stage.level);
+    }
+  }
+
+  /* =================================================================
+     9. 物件池：粒子與拖影都有硬上限，離場即回收
+     ================================================================= */
+  function emit(x, y, color, count) {
+    if (reduceMotion) count = Math.min(count, 6);
+    count = Math.min(count, MAX_PARTICLES - particles.length);
+    for (var i = 0; i < count; i++) {
+      var p = particlePool.pop() || {};
+      p.x = x; p.y = y;
+      p.vx = (Math.random() - 0.5) * 260 * S;
+      p.vy = (Math.random() - 0.9) * 260 * S;
+      p.life = 0.5 + 0.3 * Math.random(); p.age = 0;
+      p.color = color; p.r = (2 + 3 * Math.random()) * S;
+      particles.push(p);
+    }
+  }
+  function recycle(p) { if (particlePool.length < MAX_PARTICLES) particlePool.push(p); }
+
+  function initTrail() {
+    trail.length = 0; trailHead = 0;
+    for (var i = 0; i < MAX_TRAIL; i++) trail.push({ x: 0, y: 0, r: 0, age: 99 });
+  }
+  function pushTrail(x, y, r) {
+    var t = trail[trailHead];
+    if (!t) return;
+    t.x = x; t.y = y; t.r = r; t.age = 0;
+    trailHead = (trailHead + 1) % trail.length;
+  }
+
+  /* =================================================================
+     10. 動作
+     ================================================================= */
+  function release() { holding = false; if (playing && player.vy < 0) player.vy *= 0.5; }
+  function jump() {
+    if (!playing || player.jumps <= 0) return;
+    var dbl = !player.onGround;
+    player.vy = dbl ? -jumpV * 0.87 : -jumpV;
+    player.jumps -= 1;
+    player.onGround = false;
+    player.squash = 1;
+    sfx.jump(dbl);
+    if (dbl) emit(W * 0.2, player.y + player.r * 0.6, '#2ed9ff', 12);
+  }
+  var flashTimer = null;   // 受傷紅框：只留一個 handle，重新開始時一併清掉
+  function hurt() {
+    if (hurtT > 0 || invincible > 0) return;
+    lives -= 1; streak = 0; hurtT = 1.1;
+    sfx.hurt();
+    emit(W * 0.2, player.y, '#ff5d7a', 14);
+    wrap.style.boxShadow = 'inset 0 0 0 3px rgba(255,93,122,0.85)';
+    if (flashTimer) clearTimeout(flashTimer);
+    flashTimer = setTimeout(function () { flashTimer = null; wrap.style.boxShadow = 'none'; }, 160);
+    syncHud();
+    if (lives <= 0) gameOver();
+  }
+  function scoreBall(b) {
+    b.dead = true; streak += 1;
+    score += 30 + Math.min(streak * 4, 60);
+    sfx.correct(streak);
+    emit(b.x, b.y, '#ffe066', 12);
+    if (!expanded && score >= 300) expanded = true;
+    syncHud(); newTarget();
+  }
+  function scoreOtherBall(b) {
+    b.dead = true;
+    score += OTHER_BALL_POINTS;
+    if (invincible > 0) {
+      streak += 1;
+      sfx.correct(streak);
+      emit(b.x, b.y, '#ffe066', 10);
+    } else {
+      streak = 0;
+      tone(430, 0, 0.08, 'triangle', 0.08);
+      emit(b.x, b.y, '#8fb0cf', 7);
+    }
+    syncHud();
+  }
+  /* =================================================================
+     11. 生成
+     ================================================================= */
+  function spawnBall(x, y) {
+    if (balls.length >= MAX_BALLS) return;
+    var isTarget = Math.random() < 0.46;
+    var cmd = isTarget ? target : pickCmd(target.name);
+    var label = cmd.cmds[Math.floor(Math.random() * cmd.cmds.length)];
+    var r = (16 + 11 * Math.random()) * S;
+    // 字型與縮放只在生成時量測一次，繪圖迴圈內不再呼叫 measureText()
+    var size = r, font = '900 ' + Math.round(size) + "px 'Microsoft JhengHei',Arial,sans-serif";
+    ctx.font = font;
+    var wpx = ctx.measureText(label).width, maxW = r * 1.55;
+    if (wpx > maxW) { size = Math.max(9, size * maxW / wpx); font = '900 ' + Math.round(size) + "px 'Microsoft JhengHei',Arial,sans-serif"; }
+    balls.push({ id: uid++, name: cmd.name, label: label, font: font, x: x, y: y, r: r,
+                 color: isTarget ? '#ffe066' : BALL_COLORS[Math.floor(Math.random() * BALL_COLORS.length)],
+                 isTarget: isTarget, dead: false, bob: Math.random() * Math.PI * 2 });
+  }
+  function groundGapAt(x, margin) {
+    margin = margin || 0;
+    for (var i = 0; i < groundGaps.length; i++) {
+      var gap = groundGaps[i];
+      if (x + margin > gap.x && x - margin < gap.x + gap.w) return gap;
+    }
+    return null;
+  }
+  function spawnGroundGap() {
+    if (groundGaps.length >= MAX_GAPS) { gapTimer = 900 * S; return; }
+    var w = (82 + 58 * Math.random()) * S;
+    groundGaps.push({ id: uid++, x: W + 70 * S, w: w });
+    gapTimer = w + (1250 + 1050 * Math.random()) * S;
+  }
+  function spawnPlatformRun() {
+    if (platforms.length >= MAX_PLAT) { platTimer = 900 * S; return; }
+    var len = (240 + 240 * Math.random()) * S;
+    var gap = Math.max(300 * S, speed() * 0.88);
+    if (Math.random() < 0.3) {
+      var rise = deckH * 0.62, y2 = groundY - rise, y3 = groundY - 2 * rise;
+      var len3 = len * (0.6 + 0.25 * Math.random());
+      var p2 = { id: uid++, x: W + 60 * S, y: y2, w: len, tier: 2 };
+      var p3 = { id: uid++, x: W + 60 * S, y: y3, w: len3, tier: 3 };
+      platforms.push(p2, p3);
+      for (var x = p2.x + 80 * S; x < p2.x + len - 60 * S; x += gap + Math.random() * 130 * S) {
+        var up = (x > p3.x + 20 * S && x < p3.x + len3 - 20 * S && Math.random() < 0.55);
+        spawnBall(x, (up ? y3 : y2) - 24 * S);
+      }
+      platTimer = len + (420 + 620 * Math.random()) * S;
+    } else {
+      var p = { id: uid++, x: W + 60 * S, y: deckY, w: len, tier: 2 };
+      platforms.push(p);
+      for (var x2 = p.x + 80 * S; x2 < p.x + len - 60 * S; x2 += gap + Math.random() * 130 * S) {
+        spawnBall(x2, Math.random() < 0.62 ? p.y - 24 * S : p.y - deckH * 0.6);
+      }
+      platTimer = len + (280 + 480 * Math.random()) * S;
+    }
+  }
+  function platformAt(x) {
+    for (var i = 0; i < platforms.length; i++) {
+      var p = platforms[i];
+      if (x > p.x + 30 * S && x < p.x + p.w - 30 * S) return p;
+    }
+    return null;
+  }
+  function bothTiersAt(x) {
+    var t2 = false, t3 = false;
+    for (var i = 0; i < platforms.length; i++) {
+      var p = platforms[i];
+      if (x > p.x + 30 * S && x < p.x + p.w - 30 * S) { p.tier === 3 ? (t3 = true) : (t2 = true); }
+    }
+    return t2 && t3;
+  }
+  function spawnEntity() {
+    var p = progress(), x = W + 40 * S, plat = platformAt(x), overGap = groundGapAt(x, 45 * S);
+    if (starCd <= 0 && Math.random() < 0.5) {
+      starCd = (4200 + 3200 * Math.random()) * S;
+      if (stars.length < MAX_STARS) {
+        stars.push({ id: uid++, x: x, y: plat ? plat.y - 26 * S : (overGap ? groundY - deckH * 0.72 : (Math.random() < 0.5 ? groundY - 24 * S : groundY - deckH * 0.6)),
+                     r: 17 * S, dead: false, bob: Math.random() * Math.PI * 2, rot: 0 });
+      }
+      return;
+    }
+    if (overGap) {
+      spawnBall(x, groundY - deckH * 0.72);
+    } else if (!plat && Math.random() < 0.16 + 0.16 * p) {
+      if (obstacles.length < MAX_OBS)
+        obstacles.push({ id: uid++, air: false, x: x, y: groundY, w: 26 * S + 16 * Math.random() * S, h: 30 * S + 22 * Math.random() * S });
+    } else if (!bothTiersAt(x) && Math.random() < 0.12 + 0.12 * p) {
+      var base = (plat && Math.random() < 0.5) ? plat.y : groundY;
+      if (obstacles.length < MAX_OBS)
+        obstacles.push({ id: uid++, air: true, x: x, y: base - deckH * 0.6, r: (15 + 5 * Math.random()) * S, rot: Math.random() * Math.PI });
+    } else {
+      spawnBall(x, Math.random() < 0.5 ? groundY - deckH * 0.6 : groundY - 22 * S);
+    }
+  }
+
+  /* =================================================================
+     12. 繪圖（每幀只做必要的事）
+     ================================================================= */
+  function drawPlayer() {
+    var r = player.r, x = W * 0.2, cy = player.y, feet = cy + r;
+    var blink = hurtT > 0 && (((hurtT * 16) | 0) % 2 === 0);
+
+    // 「嵌入版-3」球體效果：落點陰影、落地壓扁、跳躍拉伸與滾動圖案。
+    ctx.save();
+    ctx.globalAlpha = player.onGround ? 0.62 : 0.3;
+    ctx.fillStyle = lowQ ? 'rgba(46,217,255,0.42)' : 'rgba(2,10,18,0.9)';
+    if (USE_SHADOW) { ctx.shadowColor = 'rgba(46,217,255,0.95)'; ctx.shadowBlur = 16 * S; }
+    ctx.beginPath();
+    ctx.ellipse(x + r * 0.14, feet + 2 * S, r * 0.92 * (1 + player.squash * 0.4), r * 0.22, 0, 0, 6.2832);
+    ctx.fill();
+    ctx.restore();
+
+    var stretch = Math.max(-0.2, Math.min(0.2, -player.vy / (jumpV * 3.2)));
+    var sx = (1 + player.squash * 0.34) * (1 - stretch);
+    var sy = (1 - player.squash * 0.34) * (1 + stretch);
+
+    ctx.save();
+    if (blink) ctx.globalAlpha = 0.45;
+    ctx.translate(x, feet);
+    ctx.scale(sx, sy);
+    ctx.translate(0, -r);
+
+    if (invincible > 0) {
+      var pulse = 0.6 + 0.4 * Math.sin(invincible * 14);
+      ctx.save();
+      ctx.globalCompositeOperation = 'lighter';
+      var glow = ctx.createRadialGradient(0, 0, r * 0.55, 0, 0, r * (1.65 + pulse * 0.12));
+      glow.addColorStop(0, 'rgba(255,246,190,0.72)');
+      glow.addColorStop(0.42, 'rgba(255,224,102,0.42)');
+      glow.addColorStop(1, 'rgba(255,194,61,0)');
+      ctx.fillStyle = glow;
+      ctx.shadowColor = 'rgba(255,224,102,1)';
+      ctx.shadowBlur = (28 + 12 * pulse) * S;
+      ctx.beginPath(); ctx.arc(0, 0, r * (1.7 + pulse * 0.12), 0, 6.2832); ctx.fill();
+      ctx.restore();
+    }
+
+    var ballGrad = ctx.createRadialGradient(-r * 0.34, -r * 0.42, r * 0.08, 0, 0, r * 1.08);
+    ballGrad.addColorStop(0, '#59b4d1');
+    ballGrad.addColorStop(0.45, '#2b7f9e');
+    ballGrad.addColorStop(1, '#123f57');
+    ctx.save();
+    if (USE_SHADOW) {
+      ctx.shadowColor = invincible > 0 ? 'rgba(255,224,102,1)' : 'rgba(46,217,255,0.9)';
+      ctx.shadowBlur = invincible > 0 ? 28 * S : 18 * S;
+      ctx.shadowOffsetX = 4 * S;
+      ctx.shadowOffsetY = 7 * S;
+    }
+    ctx.beginPath(); ctx.arc(0, 0, r, 0, 6.2832);
+    ctx.fillStyle = ballGrad; ctx.fill();
+    ctx.shadowBlur = 0; ctx.shadowOffsetX = 0; ctx.shadowOffsetY = 0;
+    ctx.lineWidth = r * 0.09; ctx.strokeStyle = '#0b3346'; ctx.stroke();
+    ctx.restore();
+
+    ctx.save();
+    ctx.rotate(ballSpin);
+    ctx.fillStyle = '#edf3f5';
+    ctx.font = '900 ' + Math.round(r * 1.5) + 'px "Segoe UI",Arial,"Microsoft JhengHei",sans-serif';
+    ctx.fillText('a', -r * 0.1, r * 0.04);
+    ctx.fillStyle = '#ffffff';
+    var pw = r * 0.5, pt = r * 0.16, cxp = r * 0.52, cyp = -r * 0.56;
+    ctx.fillRect(cxp - pw / 2, cyp - pt / 2, pw, pt);
+    ctx.fillRect(cxp - pt / 2, cyp - pw / 2, pt, pw);
+    ctx.restore();
+
+    ctx.globalAlpha = blink ? 0.18 : 0.32;
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath();
+    ctx.ellipse(-r * 0.33, -r * 0.44, r * 0.4, r * 0.24, -0.7, 0, 6.2832);
+    ctx.fill();
+    ctx.globalAlpha = 1;
+    ctx.restore();
+    ctx.globalAlpha = 1;
+  }
+
+  function draw() {
+    // 靜態底圖：一次 drawImage 取代原本數百次 fillRect / 漸層建立
+    ctx.drawImage(bgLayer, 0, 0, W, Hpx);
+
+    // 網格（平鋪，會捲動）
+    if (!lowQ) {
+      var gx = -(scroll * 0.28) % gridW;
+      for (var x = gx; x < W; x += gridW) ctx.drawImage(gridLayer, x, 0, gridW, groundY);
+    }
+
+    // 城市（預先烘好的圖層平鋪兩張）
+    var cx = -(scroll * 0.16) % cityW;
+    if (cx > 0) cx -= cityW;
+    ctx.drawImage(cityLayer, cx, 0, cityW, groundY);
+    if (cx + cityW < W) ctx.drawImage(cityLayer, cx + cityW, 0, cityW, groundY);
+
+    // 齒輪裝飾（high）
+    if (gears.length) {
+      ctx.save(); ctx.globalAlpha = 0.28; ctx.strokeStyle = '#2ed9ff'; ctx.lineWidth = 2 * S;
+      for (var i = 0; i < gears.length; i++) {
+        var g = gears[i];
+        ctx.save(); ctx.translate(g.x, g.y); ctx.rotate(g.rot);
+        ctx.beginPath();
+        if (g.kind === 'ring') ctx.arc(0, 0, g.r, 0, 6.2832);
+        else if (g.kind === 'tri') { ctx.moveTo(0, -g.r); ctx.lineTo(g.r, g.r); ctx.lineTo(-g.r, g.r); ctx.closePath(); }
+        else if (g.kind === 'rect') ctx.rect(-g.r, -g.r * 0.7, g.r * 2, g.r * 1.4);
+        else {
+          for (var k = 0; k < 8; k++) { var a = k / 8 * Math.PI * 2;
+            ctx.moveTo(Math.cos(a) * g.r * 0.55, Math.sin(a) * g.r * 0.55);
+            ctx.lineTo(Math.cos(a) * g.r, Math.sin(a) * g.r); }
+          ctx.arc(0, 0, g.r * 0.55, 0, 6.2832);
+        }
+        ctx.stroke(); ctx.restore();
+      }
+      ctx.restore();
+    }
+
+    // 浮塵（high）
+    if (dust.length) {
+      ctx.save(); ctx.fillStyle = '#9fd8ff';
+      for (var d = 0; d < dust.length; d++) {
+        var pt = dust[d];
+        ctx.globalAlpha = pt.a;
+        ctx.beginPath(); ctx.arc(pt.x, pt.y, pt.r, 0, 6.2832); ctx.fill();
+      }
+      ctx.restore();
+    }
+
+    // 速度線（high）
+    var prog = progress();
+    if (USE_SPEEDLINE && prog > 0.2) {
+      ctx.save(); ctx.globalAlpha = 0.08 + 0.2 * prog; ctx.strokeStyle = '#fff'; ctx.lineWidth = 2 * S;
+      ctx.beginPath();
+      for (var s2 = 0; s2 < 5; s2++) {
+        var ly = (97 * s2 * S + scroll * 0.05) % Math.max(40, groundY - 30 * S) + 14 * S;
+        var lx = W - (scroll * (1.5 + 0.25 * s2)) % (W + 300 * S);
+        ctx.moveTo(lx, ly); ctx.lineTo(lx + (46 + 70 * prog) * S, ly);
+      }
+      ctx.stroke(); ctx.restore();
+    }
+
+    // 地面透視線 + 路面虛線（線條少，直接畫）
+    ctx.save(); ctx.globalAlpha = 0.18; ctx.strokeStyle = '#2ed9ff'; ctx.lineWidth = 1.5 * S;
+    var vp = W * 0.5, pstep = 150 * S;
+    ctx.beginPath();
+    for (var px = -scroll % pstep; px < W + pstep; px += pstep) { ctx.moveTo(px, groundY); ctx.lineTo(vp + (px - vp) * 2.4, Hpx); }
+    ctx.stroke();
+    ctx.globalAlpha = 0.55; ctx.strokeStyle = '#4f8fc0'; ctx.lineWidth = 3 * S;
+    var dash = 44 * S;
+    ctx.beginPath();
+    for (var dx = -scroll % (dash * 2); dx < W; dx += dash * 2) { ctx.moveTo(dx, groundY + 16 * S); ctx.lineTo(dx + dash, groundY + 16 * S); }
+    ctx.stroke(); ctx.restore();
+
+    // 1 樓地板缺口：覆蓋地面快取並畫出清楚邊緣，玩家必須跳過
+    for (var gpi = 0; gpi < groundGaps.length; gpi++) {
+      var gp = groundGaps[gpi];
+      ctx.fillStyle = '#020812';
+      ctx.fillRect(gp.x, groundY - 3 * S, gp.w, Hpx - groundY + 4 * S);
+      ctx.save();
+      if (USE_SHADOW) { ctx.shadowColor = 'rgba(255,93,122,.8)'; ctx.shadowBlur = 8; }
+      ctx.strokeStyle = '#ff5d7a'; ctx.lineWidth = 2.5 * S;
+      ctx.beginPath();
+      ctx.moveTo(gp.x, groundY + 12 * S); ctx.lineTo(gp.x, groundY - 3 * S);
+      ctx.moveTo(gp.x + gp.w, groundY - 3 * S); ctx.lineTo(gp.x + gp.w, groundY + 12 * S);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    // 平台
+    for (var pi = 0; pi < platforms.length; pi++) {
+      var pl = platforms[pi], th = 12 * S;
+      ctx.save();
+      ctx.translate(pl.x, pl.y);
+      ctx.fillStyle = gradPlatform;              // 區域座標漸層，快取重用
+      ctx.fillRect(0, 0, pl.w, th);
+      if (USE_SHADOW) { ctx.shadowColor = 'rgba(46,217,255,0.9)'; ctx.shadowBlur = 10; }
+      ctx.strokeStyle = '#2ed9ff'; ctx.lineWidth = 2.5 * S;
+      ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(pl.w, 0); ctx.stroke();
+      ctx.shadowBlur = 0;
+      ctx.globalAlpha = 0.4; ctx.strokeStyle = '#4f8fc0'; ctx.lineWidth = 1.5 * S;
+      ctx.beginPath();
+      for (var bx = 10 * S; bx < pl.w - 6 * S; bx += 22 * S) { ctx.moveTo(bx, th); ctx.lineTo(bx + 12 * S, th + 14 * S); }
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    // 障礙
+    for (var oi = 0; oi < obstacles.length; oi++) {
+      var ob = obstacles[oi];
+      if (ob.air) {
+        ctx.save();
+        ctx.translate(ob.x, ob.y); ctx.rotate(ob.rot); ctx.scale(ob.r, ob.r);
+        if (USE_SHADOW) { ctx.shadowColor = 'rgba(255,93,122,0.9)'; ctx.shadowBlur = 14 / ob.r; }
+        ctx.fillStyle = '#ff5d7a'; ctx.fill(SPIKE_PATH);
+        ctx.shadowBlur = 0;
+        ctx.strokeStyle = 'rgba(255,255,255,0.7)'; ctx.lineWidth = 2 * S / ob.r; ctx.stroke(SPIKE_PATH);
+        ctx.fillStyle = '#4a0d1c'; ctx.beginPath(); ctx.arc(0, 0, 0.3, 0, 6.2832); ctx.fill();
+        ctx.restore();
+      } else {
+        ctx.fillStyle = '#ff5d7a'; ctx.strokeStyle = 'rgba(255,255,255,0.6)'; ctx.lineWidth = 2 * S;
+        ctx.beginPath();
+        ctx.moveTo(ob.x - ob.w / 2, ob.y); ctx.lineTo(ob.x, ob.y - ob.h); ctx.lineTo(ob.x + ob.w / 2, ob.y);
+        ctx.closePath(); ctx.fill(); ctx.stroke();
+      }
+    }
+
+    // 指令球（字型於生成時算好，此處不量測文字）
+    for (var bi = 0; bi < balls.length; bi++) {
+      var b = balls[bi];
+      if (b.dead) continue;
+      var by = b.y + Math.sin(b.bob) * 4 * S;
+      ctx.beginPath(); ctx.arc(b.x, by, b.r, 0, 6.2832);
+      ctx.fillStyle = b.color + 'e6'; ctx.fill();
+      ctx.lineWidth = b.isTarget ? 3 * S : 2 * S;
+      ctx.strokeStyle = b.isTarget ? '#fff6cf' : 'rgba(255,255,255,0.55)';
+      ctx.stroke();
+      if (b.isTarget && USE_SHADOW) {
+        ctx.save(); ctx.shadowColor = 'rgba(255,224,102,0.9)'; ctx.shadowBlur = 14;
+        ctx.beginPath(); ctx.arc(b.x, by, b.r, 0, 6.2832); ctx.stroke(); ctx.restore();
+      }
+      ctx.fillStyle = '#04101f'; ctx.font = b.font;
+      ctx.fillText(b.label, b.x, by);
+    }
+
+    // 星星
+    for (var si = 0; si < stars.length; si++) {
+      var st = stars[si];
+      if (st.dead) continue;
+      var sy = st.y + Math.sin(st.bob) * 5 * S;
+      ctx.save();
+      ctx.translate(st.x, sy); ctx.rotate(st.rot); ctx.scale(st.r, st.r);
+      if (USE_SHADOW) { ctx.shadowColor = 'rgba(255,224,102,0.95)'; ctx.shadowBlur = 18 / st.r; }
+      ctx.fillStyle = '#ffe066'; ctx.fill(STAR_PATH);
+      ctx.shadowBlur = 0;
+      ctx.strokeStyle = '#fff6cf'; ctx.lineWidth = 2 * S / st.r; ctx.stroke(STAR_PATH);
+      ctx.restore();
+    }
+
+    // 拖影（固定長度環狀緩衝，不配置新物件）
+    ctx.save(); ctx.fillStyle = '#2ed9ff';
+    for (var ti = 0; ti < trail.length; ti++) {
+      var tr = trail[ti], al = 0.3 * (1 - tr.age / 0.24);
+      if (al <= 0) continue;
+      ctx.globalAlpha = al;
+      ctx.beginPath(); ctx.arc(tr.x, tr.y, tr.r * 0.82, 0, 6.2832); ctx.fill();
+    }
+    ctx.restore();
+
+    // 粒子
+    ctx.save();
+    for (var pi2 = 0; pi2 < particles.length; pi2++) {
+      var pa = particles[pi2], pl2 = 1 - pa.age / pa.life;
+      if (pl2 <= 0) continue;
+      ctx.globalAlpha = pl2; ctx.fillStyle = pa.color;
+      ctx.beginPath(); ctx.arc(pa.x, pa.y, pa.r, 0, 6.2832); ctx.fill();
+    }
+    ctx.restore();
+
+    // 玩家球體與效果沿用「遊戲小工具(嵌入版)-3」。
+    drawPlayer();
+
+    // 無敵計時條
+    if (invincible > 0) {
+      var bw = Math.min(150 * S, W * 0.42), bh = 26 * S;
+      var bx2 = Math.max(8, Math.min(W - bw - 8, barCx - bw / 2)), by2 = barTop;
+      ctx.save();
+      ctx.globalAlpha = 0.9;
+      ctx.fillStyle = 'rgba(4,16,31,0.75)'; ctx.fillRect(bx2, by2, bw, bh);
+      ctx.strokeStyle = '#ffe066'; ctx.lineWidth = 2 * S; ctx.strokeRect(bx2, by2, bw, bh);
+      ctx.fillStyle = 'rgba(255,224,102,0.35)'; ctx.fillRect(bx2, by2, bw * (invincible / 5), bh);
+      ctx.fillStyle = '#ffe066';
+      ctx.save();
+      ctx.translate(bx2 + 15 * S, by2 + bh / 2); ctx.rotate(performance.now() / 300); ctx.scale(8 * S, 8 * S);
+      ctx.fill(STAR_PATH);
+      ctx.restore();
+      ctx.font = '900 ' + Math.round(13 * S) + "px 'Microsoft JhengHei',Arial,sans-serif";
+      ctx.textAlign = 'left';
+      ctx.fillText('無敵 ' + invincible.toFixed(1) + ' 秒', bx2 + 29 * S, by2 + bh / 2 + 1);
+      ctx.textAlign = 'center';
+      ctx.restore();
+    }
+  }
+
+  /* =================================================================
+     13. 更新（狀態）與主迴圈（更新與繪圖分離）
+     ================================================================= */
+  function update(dt, adv) {
+    elapsedPlay += dt;
+    travelled += adv; scroll += adv;
+    ballSpin += adv / Math.max(1, player.r * 1.15);
+
+    // 地板缺口先隨世界移動，讓本幀落地判定與畫面位置一致
+    for (var gpi = groundGaps.length - 1; gpi >= 0; gpi--) {
+      groundGaps[gpi].x -= adv;
+      if (groundGaps[gpi].x + groundGaps[gpi].w < -80 * S) groundGaps.splice(gpi, 1);
+    }
+
+    // 裝飾層
+    for (var gi = gears.length - 1; gi >= 0; gi--) {
+      var g = gears[gi];
+      g.x -= adv * 0.4; g.rot += g.spin * dt;
+      if (g.x < -70 * S) { gears[gi] = makeGear(W + (60 + 220 * Math.random()) * S); }
+    }
+    for (var di = 0; di < dust.length; di++) {
+      var dp = dust[di];
+      dp.x -= adv * dp.sp;
+      if (dp.x < -6 * S) { dp.x = W + 40 * Math.random() * S; dp.y = Math.random() * groundY; }
+    }
+
+    // 拖影
+    pushTrail(W * 0.2, player.y, player.r);
+    for (var tj = 0; tj < trail.length; tj++) { trail[tj].age += dt; trail[tj].x -= adv * 0.16; }
+
+    if (hurtT > 0) hurtT = Math.max(0, hurtT - dt);
+    if (player.squash > 0) player.squash = Math.max(0, player.squash - dt * 3.2);
+
+    // 物理
+    var hx = W * 0.2, prevBottom = player.y + player.r;
+    player.vy += gravity * dt;
+    player.y += player.vy * dt;
+    var bottom = player.y + player.r, landY = null;
+    if (player.vy >= 0) {
+      for (var i = 0; i < platforms.length; i++) {
+        var p = platforms[i];
+        if (hx + player.r * 0.55 > p.x && hx - player.r * 0.55 < p.x + p.w &&
+            prevBottom <= p.y + 1 && bottom >= p.y && (landY === null || p.y < landY)) landY = p.y;
+      }
+      if (!groundGapAt(hx, player.r * 0.55) && bottom >= groundY && (landY === null || groundY < landY)) landY = groundY;
+    }
+    if (landY !== null) {
+      if (!player.onGround) player.squash = 1;
+      player.y = landY - player.r; player.vy = 0; player.onGround = true; player.jumps = 2;
+    } else player.onGround = false;
+
+    // 生成節奏
+    platTimer -= adv;  if (platTimer <= 0) spawnPlatformRun();
+    gapTimer -= adv;   if (gapTimer <= 0) spawnGroundGap();
+    spawnTimer -= adv; if (spawnTimer <= 0) {
+      spawnEntity();
+      spawnTimer = Math.max(300 * S, speed() * 0.88) + Math.random() * (190 - 140 * progress()) * S;
+    }
+    if (starCd > 0) starCd -= adv;
+    if (invincible > 0) { invincible = Math.max(0, invincible - dt); if (invincible <= 0) starMusicStop(); }
+
+    // 平台移動
+    for (var pi = platforms.length - 1; pi >= 0; pi--) {
+      platforms[pi].x -= adv;
+      if (platforms[pi].x + platforms[pi].w < -80 * S) platforms.splice(pi, 1);
+    }
+
+    // 星星（用距離平方比較，省掉 sqrt）
+    for (var si = stars.length - 1; si >= 0; si--) {
+      var st = stars[si];
+      st.x -= adv; st.bob += dt * 4; st.rot += dt * 2.4;
+      if (st.x < -60 * S || st.dead) { stars.splice(si, 1); continue; }
+      var sdx = st.x - hx, sdy = st.y + Math.sin(st.bob) * 5 * S - player.y;
+      var sR = st.r + player.r * 0.95;
+      if (sdx * sdx + sdy * sdy <= sR * sR) {
+        st.dead = true; invincible = 5;
+        sfx.star(); starMusicStart(); measureBar();
+        emit(st.x, st.y, '#ffe066', 22); syncHud();
+      }
+    }
+
+    // 指令球
+    for (var bi = balls.length - 1; bi >= 0; bi--) {
+      var b = balls[bi];
+      b.x -= adv; b.bob += dt * 5;
+      if (b.x < -60 * S || b.dead) { balls.splice(bi, 1); continue; }
+      var bdx = b.x - hx, bdy = b.y + Math.sin(b.bob) * 4 * S - player.y;
+      var bR = b.r + player.r * 0.9;
+      if (bdx * bdx + bdy * bdy <= bR * bR) {
+        if (b.name === target.name) scoreBall(b);
+        else scoreOtherBall(b);
+      }
+    }
+
+    // 障礙
+    for (var oi = obstacles.length - 1; oi >= 0; oi--) {
+      var ob = obstacles[oi];
+      ob.x -= adv;
+      if (ob.x < -60 * S) { obstacles.splice(oi, 1); continue; }
+      var hit;
+      if (ob.air) {
+        ob.rot += dt * 3.2;
+        var odx = ob.x - hx, ody = ob.y - player.y, oR = ob.r + player.r * 0.85;
+        hit = odx * odx + ody * ody <= oR * oR;
+      } else {
+        hit = Math.abs(ob.x - hx) < ob.w / 2 + player.r * 0.72 && player.y + player.r * 0.72 > ob.y - ob.h;
+      }
+      if (hit) {
+        if (invincible > 0) { sfx.smash(); emit(ob.x, ob.air ? ob.y : ob.y - ob.h * 0.5, '#ff5d7a', 16); }
+        else hurt();
+        obstacles.splice(oi, 1);
+      }
+    }
+
+    // 粒子
+    for (var ai = particles.length - 1; ai >= 0; ai--) {
+      var pa = particles[ai];
+      pa.age += dt;
+      if (pa.age >= pa.life) { recycle(particles.splice(ai, 1)[0]); continue; }
+      pa.vy += 900 * S * dt;
+      pa.x += pa.vx * dt - adv * 0.6;
+      pa.y += pa.vy * dt;
+    }
+
+    // 掉進一樓缺口後離開畫面才結束，保留自然下墜的視覺回饋
+    if (player.y - player.r > Hpx + 24 * S) {
+      var fallenGap = groundGapAt(W * 0.2, player.r);
+      if (fallenGap) fallenGap.x = -fallenGap.w - 100 * S;
+      invincible = 0; hurtT = 0; starMusicStop();
+      hurt();
+      if (playing) {
+        player.y = groundY - player.r; player.vy = 0;
+        player.onGround = true; player.jumps = 2; player.squash = 1;
+      }
+    }
+  }
+
+  // FPS 取樣：僅供自動降級使用，不顯示給玩家
+  var fpsFrames = 0, fpsAcc = 0, slowWindows = 0;
+  function sampleFps(dt) {
+    if (downgraded || quality !== 'high') return;
+    fpsFrames++; fpsAcc += dt;
+    if (fpsAcc < 2) return;
+    var fps = fpsFrames / fpsAcc;
+    fpsFrames = 0; fpsAcc = 0;
+    if (fps < 45) { slowWindows++; } else { slowWindows = 0; }
+    if (slowWindows >= 2) {           // 連續兩個取樣窗都偏低才降級，且只降一次
+      downgraded = true;
+      applyQuality('low');
+      initTrail();
+      layout();
+    }
+  }
+
+  function portraitBlocked() {
+    return shell && shell.classList.contains('acr-landscape-required') && mobile &&
+           window.matchMedia && window.matchMedia('(orientation: portrait)').matches;
+  }
+
+  function loop(ts) {
+    if (!playing) { rafId = null; return; }
+    // 直向阻擋時只維持畫面，不推進物理
+    if (portraitBlocked()) { prevTs = ts; draw(); rafId = requestAnimationFrame(loop); return; }
+    if (prevTs === null) prevTs = ts;
+    var dt = (ts - prevTs) / 1000;
+    prevTs = ts;
+    if (dt > 0.05) dt = 0.05;         // 限制過大 delta，切回分頁不會暴衝
+    if (dt <= 0) { rafId = requestAnimationFrame(loop); return; }
+
+    update(dt, speed() * dt);
+    if (!playing) return;
+
+    hudAcc += dt;
+    if (hudAcc >= 0.1) { hudAcc = 0; syncHud(); }   // HUD 最多每秒 10 次
+
+    draw();
+    sampleFps(dt);
+    rafId = requestAnimationFrame(loop);
+  }
+
+  /* =================================================================
+     14. 開始 / 結束 / 全螢幕
+     ================================================================= */
+  function lockLandscape() {
+    if (!mobile || !window.screen || !screen.orientation || !screen.orientation.lock) return;
+    try { var pr = screen.orientation.lock('landscape'); if (pr && pr.catch) pr.catch(function () {}); } catch (e) {}
+  }
+  function enterFullscreen() {
+    if (!shell) return;
+    if (fullscreenEl()) { lockLandscape(); return; }
+    var fn = shell.requestFullscreen || shell.webkitRequestFullscreen || shell.msRequestFullscreen;
+    if (!fn) { lockLandscape(); return; }
+    try {
+      var pr = fn.call(shell);
+      if (pr && pr.then) pr.then(lockLandscape).catch(lockLandscape);
+      else setTimeout(lockLandscape, 120);
+    } catch (e) { lockLandscape(); }
+  }
+  function exitFullscreen() {
+    if (!fullscreenEl()) return;
+    var fn = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
+    if (!fn) return;
+    try { var pr = fn.call(document); if (pr && pr.catch) pr.catch(function () {}); } catch (e) {}
+  }
+
+  function stopAllTimers() {
+    bgmStop(); starMusicStop();
+    if (flashTimer) { clearTimeout(flashTimer); flashTimer = null; wrap.style.boxShadow = 'none'; }
+    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+  }
+
+  function startGame() {
+    stopAllTimers();                       // 重新開始前，上一輪的 frame 與音效排程一律清乾淨
+    if (shell && isMobileLike()) shell.classList.add('acr-landscape-required');
+    enterFullscreen();
+
+    playing = true;
+    score = 0; streak = 0; lives = MAX_LIVES; travelled = 0; scroll = 0; elapsedPlay = 0;
+    hurtT = 0; invincible = 0; expanded = false;
+    balls.length = 0; obstacles.length = 0; platforms.length = 0; groundGaps.length = 0; stars.length = 0;
+    while (particles.length) recycle(particles.pop());
+    prevTs = null; holding = false; ballSpin = 0;
+    platTimer = 1500 * S; gapTimer = 2100 * S; starCd = 2600 * S; spawnTimer = 260 * S;
+    fpsFrames = 0; fpsAcc = 0; slowWindows = 0;
+
+    layout();
+    initTrail();
+    player.y = groundY - player.r; player.vy = 0; player.onGround = true; player.squash = 0; player.jumps = 2;
+
+    newTarget();
+    hudCache.score = hudCache.streak = hudCache.dist = hudCache.lives = hudCache.speedLevel = -1;
+    syncHud();
+
+    if (shell) shell.classList.remove('acr-overlay-open');
+    overlay.hidden = true;
+    ensureAudio(); sfx.start(); bgmStart();
+    rafId = requestAnimationFrame(loop);
+  }
+
+  function gameOver() {
+    playing = false;
+    stopAllTimers();
+    if (shell) { shell.classList.remove('acr-landscape-required'); shell.classList.add('acr-overlay-open'); }
+    if (window.screen && screen.orientation && screen.orientation.unlock) { try { screen.orientation.unlock(); } catch (e) {} }
+    layout();
+
+    var final = Math.round(score), best = getLocalBest();
+    var isBest = final > best;
+    if (isBest) { setLocalBest(final); best = final; }
+    var madeBoard = qualifiesForBoard(final);
+    if (isBest && final > 0) sfx.best();
+
+    elFinalSc.textContent = final + ' 分';
+    elFinalNt.innerHTML = (isBest ? '這是你在這台裝置上的最高分。' : '你的最高紀錄是 ' + best + ' 分。') +
+                          '<br>跑了 ' + Math.round(travelled / (10 * S)) + ' 公尺。' +
+                          (madeBoard ? '<br>這個成績可簽名加入全站排行榜！' : '');
+    if (signForm) signForm.hidden = !madeBoard;
+    if (nameInput) { nameInput.disabled = false; nameInput.value = ''; }
+    if (signBtn) { signBtn.disabled = false; signBtn.textContent = '簽名'; }
+    refreshBestHud();
+    ovIntro.hidden = true;
+    ovOver.hidden = false;
+    overlay.hidden = false;
+    overlay.scrollTop = 0;
+    draw();
+  }
+
+  /* =================================================================
+     15. 事件（統一註冊一次，不重複綁定）
+     ================================================================= */
+  function isJumpKey(e) { return e.code === 'Space' || e.code === 'ArrowUp' || e.key === ' '; }
+  function onPress(e) {
+    if (!playing) return;
+    if (e && e.preventDefault) e.preventDefault();
+    jump(); holding = true;
+  }
+
+  if (window.PointerEvent) {
+    wrap.addEventListener('pointerdown', onPress, { passive: false });
+    window.addEventListener('pointerup', release, { passive: true });
+    window.addEventListener('pointercancel', release, { passive: true });
+  } else {
+    wrap.addEventListener('touchstart', onPress, { passive: false });
+    window.addEventListener('touchend', release, { passive: true });
+    window.addEventListener('touchcancel', release, { passive: true });
+    wrap.addEventListener('mousedown', onPress, false);
+    window.addEventListener('mouseup', release, false);
+  }
+  window.addEventListener('keydown', function (e) {
+    if (!isJumpKey(e)) return;
+    if (e.repeat) { e.preventDefault(); return; }
+    if (playing) { e.preventDefault(); jump(); holding = true; }
+  });
+  window.addEventListener('keyup', function (e) { if (isJumpKey(e)) release(); });
+  window.addEventListener('blur', release);
+
+  function pauseForPage() {
+    if (!playing) return;
+    release(); bgmStop(); starMusicStop(); prevTs = null;
+    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+  }
+  function resumeFromPage() {
+    if (!playing || rafId) return;
+    prevTs = null; bgmStart(); if (invincible > 0) starMusicStart();
+    rafId = requestAnimationFrame(loop);
+  }
+  document.addEventListener('visibilitychange', function () { document.hidden ? pauseForPage() : resumeFromPage(); });
+  window.addEventListener('pagehide', pauseForPage);
+  window.addEventListener('pageshow', resumeFromPage);
+
+  elStart.addEventListener('click', function (e) {
+    e.stopPropagation();
+    startGame();
+  });
+  elAgain.addEventListener('click', function (e) { e.stopPropagation(); startGame(); });
+  if (signBtn) {
+    signBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var name = nameInput ? nameInput.value.trim().slice(0, 12) : '';
+      name = name || '玩家';
+      insertScore(name, Math.round(score));
+      signBtn.disabled = true;
+      signBtn.textContent = '已簽名';
+      if (nameInput) nameInput.disabled = true;
+    });
+  }
+
+  // resize / 旋轉：debounce，避免連續觸發時反覆重建離屏圖層
+  var resizeTimer = null;
+  function scheduleLayout(delay) {
+    if (resizeTimer) clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      resizeTimer = null;
+      layout();
+      prevTs = null;
+      if (!playing) draw();
+    }, delay || 120);
+  }
+  window.addEventListener('resize', function () { scheduleLayout(120); });
+  window.addEventListener('orientationchange', function () { scheduleLayout(200); });
+  if (window.screen && screen.orientation && screen.orientation.addEventListener) {
+    screen.orientation.addEventListener('change', function () { scheduleLayout(200); });
+  }
+  ['fullscreenchange', 'webkitfullscreenchange', 'MSFullscreenChange'].forEach(function (ev) {
+    document.addEventListener(ev, function () { scheduleLayout(60); });
+  });
+
+  /* =================================================================
+     16. 初始化
+     ================================================================= */
+  applyQuality(quality);
+  layout();
+  initTrail();
+  target = pickCmd();
+  draw();
+  refreshBestHud();
+  renderVisitCount();
+  renderLeaderboard();
+
+})();
+</script>
+</section>
+
+</body>
+</html>
