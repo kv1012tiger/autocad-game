@@ -1006,6 +1006,7 @@
         if (isNewBest) { setBest(score); best = score; }
         var madeTop3 = qualifiesForBoard(score);
         if (isNewBest && score > 0) { sfx.best(); }
+        try { if (window.AIKB_GAME_DONE) { window.AIKB_GAME_DONE('quick', score); } } catch (e) { /* 金幣回報失敗不影響遊戲 */ }
 
         var heading = reason === "wrong" ? "點錯指令了！"
           : reason === "missed" ? "漏接指令了！"
@@ -1062,5 +1063,6 @@
   </script>
 </section>
 
+<script src="https://kv1012tiger.github.io/autocad-tw-island/assets/js/game-reward.js" defer></script>
 </body>
 </html>

@@ -1493,6 +1493,7 @@
     if (isBest) { setLocalBest(final); best = final; }
     var madeBoard = qualifiesForBoard(final);
     if (isBest && final > 0) sfx.best();
+    try { if (window.AIKB_GAME_DONE) window.AIKB_GAME_DONE('runner', final); } catch (e) {}
 
     elFinalSc.textContent = final + ' 分';
     elFinalNt.innerHTML = (isBest ? '這是你在這台裝置上的最高分。' : '你的最高紀錄是 ' + best + ' 分。') +
@@ -1605,5 +1606,6 @@
 </script>
 </section>
 
+<script src="https://kv1012tiger.github.io/autocad-tw-island/assets/js/game-reward.js" defer></script>
 </body>
 </html>
